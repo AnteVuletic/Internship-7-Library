@@ -15,5 +15,14 @@ namespace Internship_7_Library.Data.Entities.Models
         public Author AuthorInfo { get; set; }
         public Publisher Publisher { get; set; }
         public ICollection<Book> PhysicalBooks { get; set; }
+
+        public TypeBook(string title, string numPages, Genre genre, Author authorInfo, Publisher publisher)
+        {
+            Title = title;
+            NumPages = numPages;
+            Genre = genre;
+            AuthorInfo = authorInfo;
+            Publisher = publisher;
+        }
     }
 }

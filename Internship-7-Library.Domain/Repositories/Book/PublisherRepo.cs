@@ -45,7 +45,12 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public bool EditPublisher(int publisherId, string publisherName, string publisherCountry)
         {
-            return RemovePublisher(publisherId) && AddPublisher(publisherName, publisherCountry);
+            var publisherFound = GetPublisher(publisherId);
+            if (publisherFound == null) return false;
+            publisherFound.Name = publisherName;
+            publisherFound.Country = publisherCountry;
+            _context.SaveChanges();
+            return true;
         }
     }
 }

@@ -49,7 +49,12 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public bool EditAuthor(int authorId, string name, string surname)
         {
-            return RemoveAuthor(authorId) && AddAuthor(name, surname);
+            var authorFound = GetAuthor(authorId);
+            if (authorFound == null) return false;
+            authorFound.Person.Name = name;
+            authorFound.Person.Surname = surname;
+            _context.SaveChanges();
+            return true;
         }
     }
 }
