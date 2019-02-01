@@ -12,5 +12,11 @@ namespace Internship_7_Library.Data.Entities.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public ICollection<Member> Members { get; set; }
+
+        public Institution(string name, string address)
+        {
+            Name = name;
+            Address = address;
+        }
     }
 }
