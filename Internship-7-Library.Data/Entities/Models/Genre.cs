@@ -12,5 +12,15 @@ namespace Internship_7_Library.Data.Entities.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public ICollection<TypeBook> BookInfos { get; set; }
+
+        public Genre(string name)
+        {
+            Name = name;
+        }
+        public Genre(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
     }
 }
