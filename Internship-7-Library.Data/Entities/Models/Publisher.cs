@@ -12,5 +12,11 @@ namespace Internship_7_Library.Data.Entities.Models
         public string Name { get; set; }
         public string Country { get; set; }
         public ICollection<TypeBook> BookInfos { get; set; }
+
+        public Publisher(string name, string country)
+        {
+            Name = name;
+            Country = country;
+        }
     }
 }

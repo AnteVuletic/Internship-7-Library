@@ -42,7 +42,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public bool RemoveGenre(int genreId)
         {
-            var foundGenre = _context.Genres.Find(genreId);
+            var foundGenre = GetGenre(genreId);
             if (foundGenre != null)
             {
                 _context.Genres.Remove(foundGenre);
