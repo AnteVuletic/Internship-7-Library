@@ -41,6 +41,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var authorFound = _context.Authors.Find(authorId);
             if (authorFound == null) return false;
+            _personRepo.RemovePerson(authorFound.Person.PersonId);
             _context.Authors.Remove(authorFound);
             _context.SaveChanges();
             return true;

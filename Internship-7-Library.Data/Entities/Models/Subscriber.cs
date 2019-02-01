@@ -10,9 +10,15 @@ namespace Internship_7_Library.Data.Entities.Models
     {
         public int SubscriberId { get; set; }
         public Person Person { get; set; }
-        public int MonthlyBookLimit { get; set; }
         public DateTime DateOfRenewal { get; set; }
         public Subscription TypeSubscription { get; set; }
+
+        public Subscriber(Person person, DateTime dateOfRenewal,Subscription typeSubscription)
+        {
+            Person = person;
+            DateOfRenewal = dateOfRenewal;
+            TypeSubscription = typeSubscription;
+        }
 
     }
 }

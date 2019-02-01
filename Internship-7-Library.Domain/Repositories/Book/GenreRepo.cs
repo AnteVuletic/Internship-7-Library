@@ -47,7 +47,11 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public bool EditGenre(int genreId,string genreName,string description)
         {
-            return RemoveGenre(genreId) && AddGenre(genreName, description);
+            var genreFound = GetGenre(genreId);
+            if (genreFound == null) return false;
+            genreFound.Name = genreName;
+            genreFound.Description = description;
+            return true;
         }
 
     }
