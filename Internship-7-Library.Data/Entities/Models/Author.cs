@@ -11,5 +11,10 @@ namespace Internship_7_Library.Data.Entities.Models
         public int AuthorId { get; set; }
         public Person Person { get; set; }
         public ICollection<TypeBook> BookInfos { get; set; }
+
+        public Author(Person person)
+        {
+            Person = person;
+        }
     }
 }

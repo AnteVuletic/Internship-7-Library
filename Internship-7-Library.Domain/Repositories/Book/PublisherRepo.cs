@@ -28,27 +28,19 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public bool AddPublisher(string publisherName, string publisherCountry)
         {
-            if (!_context.Publishers.Any(publish => publish.Name == publisherName))
-            {
-                _context.Publishers.Add(new Publisher(publisherName, publisherCountry));
-                _context.SaveChanges();
-                return true;
-            }
-            else
-                return false;
+            if (_context.Publishers.Any(publish => publish.Name == publisherName)) return false;
+            _context.Publishers.Add(new Publisher(publisherName, publisherCountry));
+            _context.SaveChanges();
+            return true;
         }
 
         public bool RemovePublisher(int publisherId)
         {
             var publisherFound = GetPublisher(publisherId);
-            if (publisherFound != null)
-            {
-                _context.Publishers.Remove(publisherFound);
-                _context.SaveChanges();
-                return true;
-            }
-            else
-                return false;
+            if (publisherFound == null) return false;
+            _context.Publishers.Remove(publisherFound);
+            _context.SaveChanges();
+            return true;
         }
 
         public bool EditPublisher(int publisherId, string publisherName, string publisherCountry)

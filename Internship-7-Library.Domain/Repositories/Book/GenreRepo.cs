@@ -28,29 +28,21 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public bool AddGenre(string genreName, string genreDescription)
         {
-            if (!_context.Genres.Any(gnr => gnr.Name == genreName))
-            {
-                _context.Genres.Add(genreDescription == ""
-                    ? new Genre(genreName)
-                    : new Genre(genreName, genreDescription));
-                _context.SaveChanges();
-                return true;
-            }
-            else
-                return false;
+            if (_context.Genres.Any(gnr => gnr.Name == genreName)) return false;
+            _context.Genres.Add(genreDescription == ""
+                ? new Genre(genreName)
+                : new Genre(genreName, genreDescription));
+            _context.SaveChanges();
+            return true;
         }
 
         public bool RemoveGenre(int genreId)
         {
             var foundGenre = GetGenre(genreId);
-            if (foundGenre != null)
-            {
-                _context.Genres.Remove(foundGenre);
-                _context.SaveChanges();
-                return true;
-            }
-            else
-                return false;
+            if (foundGenre == null) return false;
+            _context.Genres.Remove(foundGenre);
+            _context.SaveChanges();
+            return true;
         }
 
         public bool EditGenre(int genreId,string genreName,string description)
