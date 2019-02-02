@@ -13,6 +13,10 @@ namespace Internship_7_Library.Data.Entities.Models
         public bool Professor { get; set; }
         public Institution Institution { get; set; }
 
+        public Member()
+        {
+
+        }
         public Member(Person person, bool professor, Institution institution)
         {
             Person = person;

@@ -20,7 +20,10 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             return _context.Genres.Find(genreId);
         }
-
+        public Genre GetGenreByText(string genreName)
+        {
+            return _context.Genres.First(gnr => gnr.Name == genreName);
+        }
         public List<Genre> GetAllGenres()
         {
             return _context.Genres.ToList();

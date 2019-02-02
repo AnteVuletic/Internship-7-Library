@@ -75,9 +75,9 @@
             // contentPanel
             // 
             this.contentPanel.BackColor = System.Drawing.Color.White;
-            this.contentPanel.Location = new System.Drawing.Point(195, 1);
+            this.contentPanel.Location = new System.Drawing.Point(218, 1);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(939, 630);
+            this.contentPanel.Size = new System.Drawing.Size(916, 630);
             this.contentPanel.TabIndex = 1;
             // 
             // bookMngDrpDwn

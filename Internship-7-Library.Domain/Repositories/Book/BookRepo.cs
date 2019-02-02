@@ -30,7 +30,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public void AddBook(TypeBook bookInfo)
         {
-            _context.Books.Add(new Data.Entities.Models.Book(bookInfo));
+            _context.Books.Add(new Data.Entities.Models.Book(_context.TypeBooks.Find(bookInfo.TypeBookId)));
             _context.SaveChanges();
         }
 

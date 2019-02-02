@@ -12,6 +12,7 @@ namespace Internship_7_Library.Data.Entities.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime? DateOfBirth { get; set; }
+        public ICollection<Author> Authors { get; set; }
         public ICollection<Staff> Staff { get; set; }
         public ICollection<Member> InstitutionMembers { get; set; }
         public ICollection<Subscriber> Subscribers { get; set; }

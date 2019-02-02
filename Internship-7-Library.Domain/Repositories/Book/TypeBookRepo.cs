@@ -12,9 +12,9 @@ namespace Internship_7_Library.Domain.Repositories.Book
     {
         private readonly Context _context;
         private readonly BookRepo _bookRepo;
-        public TypeBookRepo(Context context,BookRepo bookRepo)
+        public TypeBookRepo(BookRepo bookRepo)
         {
-            _context = context;
+            _context = new Context();
             _bookRepo = bookRepo;
         }
 
@@ -31,14 +31,13 @@ namespace Internship_7_Library.Domain.Repositories.Book
         public bool AddBooks(string title, string numPages, Genre genre, Author author, Publisher publisher, int numberOfCopies)
         {
             if (_context.TypeBooks.Any(typbk => typbk.Title == title)) return false;
-            var bookInfo = new TypeBook(title, numPages, genre, author, publisher);
+            var bookInfo = new TypeBook(title, numPages, _context.Genres.Find(genre.GenreId), _context.Authors.Find(author.AuthorId), _context.Publishers.Find(publisher.PublisherId));
             _context.TypeBooks.Add(bookInfo);
+            _context.SaveChanges();
             for (var copy = 0; copy <= numberOfCopies; copy++)
             {
                 _bookRepo.AddBook(bookInfo);
             }
-
-            _context.SaveChanges();
             return true;
         }
 

@@ -14,6 +14,9 @@ namespace Internship_7_Library.Data.Entities.Models
         public BookState State { get; set; }
         public ICollection<Rent> Rents { get; set; }
 
+        public Book()
+        {
+        }
         public Book(TypeBook bookInfo)
         {
             BookInfo = bookInfo;

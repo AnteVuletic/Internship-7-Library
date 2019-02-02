@@ -16,6 +16,10 @@ namespace Internship_7_Library.Data.Entities.Models
         public DateTime StartOfRent { get; set; }
         public DateTime? ReturnDate { get; set; }
 
+        public Rent()
+        {
+            
+        }
         public Rent(Person person, Book book, DateTime startOfRent)
         {
             Person = person;

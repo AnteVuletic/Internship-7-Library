@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Book forms\BookAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Book forms\BookAdd.Designer.cs">
+      <DependentUpon>BookAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Genre forms\GenreAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Genre forms\GenreAdd.Designer.cs">
+      <DependentUpon>GenreAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +66,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Author forms\AuthorAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Author forms\AuthorAdd.Designer.cs">
+      <DependentUpon>AuthorAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Publisher forms\PublisherAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Publisher forms\PublisherAdd.Designer.cs">
+      <DependentUpon>PublisherAdd.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Book forms\BookAdd.resx">
+      <DependentUpon>BookAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Genre forms\GenreAdd.resx">
+      <DependentUpon>GenreAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,6 +96,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Author forms\AuthorAdd.resx">
+      <DependentUpon>AuthorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Publisher forms\PublisherAdd.resx">
+      <DependentUpon>PublisherAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,10 +116,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Internship-7-Library.Data\Internship-7-Library.Data.csproj">
+      <Project>{D52C4C5F-D07A-4511-A403-AA042E0663D9}</Project>
+      <Name>Internship-7-Library.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Internship-7-Library.Domain\Internship-7-Library.Domain.csproj">
       <Project>{2af2cb09-9d5c-4043-a472-3651b2e8fadb}</Project>
       <Name>Internship-7-Library.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,6 +21,10 @@ namespace Internship_7_Library.Domain.Repositories.Book
             return _context.Publishers.Find(publisherId);
         }
 
+        public Publisher GetPublisherByName(string pubName)
+        {
+            return _context.Publishers.First(pub => pub.Name == pubName);
+        }
         public List<Publisher> GetAllPublisher()
         {
             return _context.Publishers.ToList();

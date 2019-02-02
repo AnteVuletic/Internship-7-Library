@@ -13,6 +13,10 @@ namespace Internship_7_Library.Data.Entities.Models
         public DateTime DateOfRenewal { get; set; }
         public Subscription TypeSubscription { get; set; }
 
+        public Subscriber()
+        {
+            
+        }
         public Subscriber(Person person, DateTime dateOfRenewal,Subscription typeSubscription)
         {
             Person = person;

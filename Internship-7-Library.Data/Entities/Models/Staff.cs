@@ -13,6 +13,10 @@ namespace Internship_7_Library.Data.Entities.Models
         public Person Person { get; set; }
         public StaffPosition Position { get; set; }
 
+        public Staff()
+        {
+            
+        }
         public Staff(Person person, StaffPosition position)
         {
             Person = person;

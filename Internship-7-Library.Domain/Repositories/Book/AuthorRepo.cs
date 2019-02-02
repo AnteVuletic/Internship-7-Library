@@ -23,16 +23,21 @@ namespace Internship_7_Library.Domain.Repositories.Book
             return _context.Authors.Find(authorId);
         }
 
-        public List<Author> GetAllAuthors()
+        public Author GetAuthorByName(string authorName)
         {
-            return _context.Authors.ToList();
+            return _context.Authors.First(ath => ath.AuthorPerson.Name == authorName);
+        }
+
+        public List<Person> GetAllAuthors()
+        {
+            return _context.Authors.Select(ath => ath.AuthorPerson).ToList();
         }
 
         public bool AddAuthor(string name, string surname)
         {
             var authorPerson = new Person(name,surname,default(DateTime));
             if (!_personRepo.AddPerson(authorPerson)) return false;
-            _context.Authors.Add(new Author(authorPerson));
+            _context.Authors.Add(new Author(_context.Persons.Find(authorPerson.PersonId)));
             _context.SaveChanges();
             return true;
         }
@@ -41,7 +46,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var authorFound = _context.Authors.Find(authorId);
             if (authorFound == null) return false;
-            _personRepo.RemovePerson(authorFound.Person.PersonId);
+            _personRepo.RemovePerson(authorFound.AuthorPerson.PersonId);
             _context.Authors.Remove(authorFound);
             _context.SaveChanges();
             return true;
@@ -52,8 +57,8 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var authorFound = GetAuthor(authorId);
             if (authorFound == null) return false;
-            authorFound.Person.Name = name;
-            authorFound.Person.Surname = surname;
+            authorFound.AuthorPerson.Name = name;
+            authorFound.AuthorPerson.Surname = surname;
             _context.SaveChanges();
             return true;
         }

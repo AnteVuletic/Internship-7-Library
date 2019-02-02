@@ -33,7 +33,7 @@ namespace Internship_7_Library.Domain.Repositories
         {
             var staffPerson = new Person(name,surname,dateOfBirth);
             if (!_personRepo.AddPerson(staffPerson)) return false;
-            _context.Staff.Add(new Staff(staffPerson, position));
+            _context.Staff.Add(new Staff(_context.Persons.Find(staffPerson.PersonId), position));
             _context.SaveChanges();
             return true;
         }
