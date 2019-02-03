@@ -16,6 +16,7 @@ namespace Internship_7_Library.Data.Entities.Models
 
         public Book()
         {
+            
         }
         public Book(TypeBook bookInfo)
         {

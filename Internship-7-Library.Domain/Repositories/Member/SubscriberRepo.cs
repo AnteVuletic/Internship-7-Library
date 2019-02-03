@@ -33,7 +33,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var personSubscriber = new Person(name, surname, dateOfBirth);
             if (!_personRepo.AddPerson(personSubscriber)) return false;
-            _context.Subscribers.Add(new Subscriber(_context.Persons.Find(personSubscriber.PersonId), dateOfRenewal, subType));
+            _context.Subscribers.Add(new Subscriber(_context.Persons.Find(personSubscriber.PersonId), dateOfRenewal, _context.Subscriptions.Find(subType.SubscriptionId)));
             _context.SaveChanges();
             return true;
         }

@@ -22,6 +22,10 @@ namespace Internship_7_Library.Domain.Repositories.Member
             return _context.Subscriptions.Find(subscriptionId);
         }
 
+        public Subscription GetSubscriptionByCategory(string category)
+        {
+            return _context.Subscriptions.First(sub => sub.Category == category);
+        }
         public List<Subscription> GetAllSubscriptionTypes()
         {
             return _context.Subscriptions.ToList();

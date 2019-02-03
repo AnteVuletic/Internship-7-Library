@@ -14,7 +14,7 @@ namespace Internship_7_Library.Data.Entities.Models
 
         public Author()
         {
-
+            
         }
         public Author(Person authorPerson)
         {

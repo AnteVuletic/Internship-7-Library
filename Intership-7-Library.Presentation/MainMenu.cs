@@ -12,7 +12,12 @@ using Internship_7_Library.Domain.Repositories.Book;
 using Internship_7_Library.Domain.Repositories.Member;
 using Intership_7_Library.Presentation.Book_forms;
 using Intership_7_Library.Presentation.Genre;
+using Intership_7_Library.Presentation.Institution_forms;
+using Intership_7_Library.Presentation.Member_forms;
 using Intership_7_Library.Presentation.Publisher__forms;
+using Intership_7_Library.Presentation.Staff_forms;
+using Intership_7_Library.Presentation.Subscriber_forms;
+using Intership_7_Library.Presentation.Subscription_forms;
 
 namespace Intership_7_Library.Presentation
 {
@@ -165,7 +170,8 @@ namespace Intership_7_Library.Presentation
 
         private void staffAddBtn_Click(object sender, EventArgs e)
         {
-
+            var staffForm = new StaffAdd(_staffRepo);
+            Nav(staffForm,contentPanel);
         }
 
         private void staffRemBtn_Click(object sender, EventArgs e)
@@ -180,7 +186,8 @@ namespace Intership_7_Library.Presentation
 
         private void subTypeAddBtn_Click(object sender, EventArgs e)
         {
-
+            var subTypeForm = new SubscriptionAdd(_subscriptionRepo);
+            Nav(subTypeForm, contentPanel);
         }
 
         private void subTypeRemBtn_Click(object sender, EventArgs e)
@@ -195,7 +202,8 @@ namespace Intership_7_Library.Presentation
 
         private void subAddBtn_Click(object sender, EventArgs e)
         {
-
+            var subForm = new SubscriberAdd(_subscriptionRepo, _subscriberRepo);
+            Nav(subForm, contentPanel);
         }
 
         private void subRemoveBtn_Click(object sender, EventArgs e)
@@ -210,7 +218,8 @@ namespace Intership_7_Library.Presentation
 
         private void instAddBtn_Click(object sender, EventArgs e)
         {
-
+            var instForm = new InstitutionAdd(_institutionRepo);
+            Nav(instForm,contentPanel);
         }
 
         private void instRemBtn_Click(object sender, EventArgs e)
@@ -225,7 +234,8 @@ namespace Intership_7_Library.Presentation
 
         private void memberAddBtn_Click(object sender, EventArgs e)
         {
-
+            var memberForm = new MemberAdd(_memberRepo, _institutionRepo);
+            Nav(memberForm, contentPanel);
         }
 
         private void memberRemBtn_Click(object sender, EventArgs e)

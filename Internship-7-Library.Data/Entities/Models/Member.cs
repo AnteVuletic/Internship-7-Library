@@ -15,7 +15,7 @@ namespace Internship_7_Library.Data.Entities.Models
 
         public Member()
         {
-
+            
         }
         public Member(Person person, bool professor, Institution institution)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
@@ -23,9 +24,11 @@ namespace Internship_7_Library.Domain.Repositories.Book
             return _context.Authors.Find(authorId);
         }
 
-        public Author GetAuthorByName(string authorName)
+        public Author GetAuthorByName(string authorFullname)
         {
-            return _context.Authors.First(ath => ath.AuthorPerson.Name == authorName);
+            var regName = new Regex(@"[^\s]+");
+            var matchAuthor = regName.Matches(authorFullname);
+            return _context.Authors.First(ath => ath.AuthorPerson.Name == matchAuthor[0].Value && ath.AuthorPerson.Surname == matchAuthor[1].Value);
         }
 
         public List<Person> GetAllAuthors()

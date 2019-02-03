@@ -22,6 +22,10 @@ namespace Internship_7_Library.Domain.Repositories.Member
             return _context.Institutions.Find(institutionId);
         }
 
+        public Institution GetInstitutionByName(string instName)
+        {
+            return _context.Institutions.First(inst => inst.Name == instName);
+        }
         public List<Institution> GetAllInstitutions()
         {
             return _context.Institutions.ToList();

@@ -18,6 +18,7 @@ namespace Intership_7_Library.Presentation.Book_forms
         private readonly GenreRepo _genreRepo;
         private readonly PublisherRepo _publisherRepo;
         private readonly AuthorRepo _authorRepo;
+        private bool _firstIteration;
         public BookAdd(TypeBookRepo typeBookRepo, BookRepo bookRepo, GenreRepo genreRepo, PublisherRepo publisherRepo,AuthorRepo authorRepo)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Intership_7_Library.Presentation.Book_forms
             _genreRepo = genreRepo;
             _publisherRepo = publisherRepo;
             _authorRepo = authorRepo;
+            _firstIteration = true;
             StartingPoint();
         }
 
@@ -37,6 +39,7 @@ namespace Intership_7_Library.Presentation.Book_forms
             titleTextBox.Text = "";
             numberTextBox.Text = "";
             copiesTextBox.Text = "";
+            if (!_firstIteration) return;
             foreach (var genre in _genreRepo.GetAllGenres())
             {
                 genreCombo.Items.Add(genre.Name);
@@ -49,8 +52,9 @@ namespace Intership_7_Library.Presentation.Book_forms
 
             foreach (var author in _authorRepo.GetAllAuthors())
             {
-                authorCombo.Items.Add(author.Name);
+                authorCombo.Items.Add(author.Name + " " + author.Surname);
             }
+            _firstIteration = false;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
