@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Author forms\AuthorEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Author forms\AuthorEdit.Designer.cs">
+      <DependentUpon>AuthorEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Author forms\AuthorRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,12 @@
     <Compile Include="Book forms\BookAdd.Designer.cs">
       <DependentUpon>BookAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Book forms\BookEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Book forms\BookEdit.Designer.cs">
+      <DependentUpon>BookEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Book forms\BookRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,12 @@
     </Compile>
     <Compile Include="Genre forms\GenreAdd.Designer.cs">
       <DependentUpon>GenreAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Genre forms\GenreEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Genre forms\GenreEdit.Designer.cs">
+      <DependentUpon>GenreEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Genre forms\GenreRemove.cs">
       <SubType>Form</SubType>
@@ -120,6 +138,12 @@
     <Compile Include="Publisher forms\PublisherAdd.Designer.cs">
       <DependentUpon>PublisherAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Publisher forms\PublisherEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Publisher forms\PublisherEdit.Designer.cs">
+      <DependentUpon>PublisherEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Publisher forms\PublisherRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,17 +186,26 @@
     <Compile Include="Subscription forms\SubscriptionRemove.Designer.cs">
       <DependentUpon>SubscriptionRemove.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Author forms\AuthorEdit.resx">
+      <DependentUpon>AuthorEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Author forms\AuthorRemove.resx">
       <DependentUpon>AuthorRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Book forms\BookAdd.resx">
       <DependentUpon>BookAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Book forms\BookEdit.resx">
+      <DependentUpon>BookEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Book forms\BookRemove.resx">
       <DependentUpon>BookRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Genre forms\GenreAdd.resx">
       <DependentUpon>GenreAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Genre forms\GenreEdit.resx">
+      <DependentUpon>GenreEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Genre forms\GenreRemove.resx">
       <DependentUpon>GenreRemove.cs</DependentUpon>
@@ -206,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Publisher forms\PublisherAdd.resx">
       <DependentUpon>PublisherAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Publisher forms\PublisherEdit.resx">
+      <DependentUpon>PublisherEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Publisher forms\PublisherRemove.resx">
       <DependentUpon>PublisherRemove.cs</DependentUpon>

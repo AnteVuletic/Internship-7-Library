@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
+using Internship_7_Library.Data.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories.Book
@@ -53,15 +55,38 @@ namespace Internship_7_Library.Domain.Repositories.Book
         }
 
         public bool EditBook(int typeBookId, string title, string numPages, Genre genre, Author author,
-            Publisher publisher)
+            Publisher publisher,int numberOfCopies)
         {
             var bookFound = GetBookType(typeBookId);
+            var copiesOfBook = _context.Books.Count(bk => bk.BookInfo.TypeBookId == bookFound.TypeBookId);
+            if (copiesOfBook != numberOfCopies)
+            {
+                var difference = copiesOfBook - numberOfCopies;
+                if (difference > 0)
+                {
+                    for (var i = 0; i < difference; i++)
+                    {
+                        _context.Books.Remove(_context.Books.FirstOrDefault(bk =>
+                            bk.BookInfo.TypeBookId == bookFound.TypeBookId));
+                    }
+                }
+
+                if (difference < 0)
+                {
+                    difference *= -1;
+                    for (var i = 0; i < difference; i++)
+                    {
+                        _context.Books.Add(
+                            new Data.Entities.Models.Book(_context.TypeBooks.Find(bookFound.TypeBookId)));
+                    }
+                }
+            }
             if (bookFound == null) return false;
             bookFound.Title = title;
             bookFound.NumPages = numPages;
-            bookFound.Genre = genre;
-            bookFound.AuthorInfo = author;
-            bookFound.Publisher = publisher;
+            bookFound.Genre = _context.Genres.Find(genre.GenreId);
+            bookFound.AuthorInfo = _context.Authors.Find(author.AuthorId);
+            bookFound.Publisher = _context.Publishers.Find(publisher.PublisherId);
             _context.SaveChanges();
             return true;
         }

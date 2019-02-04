@@ -9,36 +9,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories.Book;
 
-namespace Intership_7_Library.Presentation.Publisher_forms
+namespace Intership_7_Library.Presentation.Author_forms
 {
-    public partial class PublisherRemove : Form
+    public partial class AuthorEdit : Form
     {
-        private readonly PublisherRepo _publisherRepo;
+        private readonly AuthorRepo _authorRepo;
         private int _index;
-        public PublisherRemove(PublisherRepo publisherRepo)
+        public AuthorEdit(AuthorRepo authorRepo)
         {
             InitializeComponent();
-            _publisherRepo = publisherRepo;
+            _authorRepo = authorRepo;
             _index = 0;
             SetData();
         }
 
         private bool SetData()
         {
-            if (_publisherRepo.GetAllPublisher().Count == 0)
+            if (_authorRepo.GetAllAuthors().Count == 0)
             {
                 nameTextBox.Text = "";
-                countryTextBox.Text = "";
+                surnameTextBox.Text = "";
             }
-
-            if (_publisherRepo.GetAllPublisher().Count <= _index || _index < 0) return false;
-            nameTextBox.Text = _publisherRepo.GetAllPublisher()[_index].Name;
-            countryTextBox.Text = _publisherRepo.GetAllPublisher()[_index].Country;
+            if (_authorRepo.GetAllAuthors().Count <= _index || _index < 0) return false;
+            nameTextBox.Text = _authorRepo.GetAllAuthors()[_index].AuthorPerson.Name;
+            surnameTextBox.Text = _authorRepo.GetAllAuthors()[_index].AuthorPerson.Surname;
             return true;
         }
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            _publisherRepo.RemovePublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId);
+            _authorRepo.EditAuthor(_authorRepo.GetAllAuthors()[_index].AuthorId, nameTextBox.Text, surnameTextBox.Text);
             _index = 0;
             SetData();
         }
@@ -59,6 +58,5 @@ namespace Intership_7_Library.Presentation.Publisher_forms
             _index++;
             if (!SetData()) _index--;
         }
-
     }
 }

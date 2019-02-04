@@ -121,7 +121,8 @@ namespace Intership_7_Library.Presentation
 
         private void genreEditBtn_Click(object sender, EventArgs e)
         {
-
+            var genreForm = new GenreEdit(_genreRepo);
+            Nav(genreForm,contentPanel);
         }
 
         private void bookAddBtn_Click(object sender, EventArgs e)
@@ -138,7 +139,8 @@ namespace Intership_7_Library.Presentation
 
         private void bookEditBtn_Click(object sender, EventArgs e)
         {
-
+            var bookForm = new BookEdit(_typeBookRepo, _authorRepo, _publisherRepo,_genreRepo);
+            Nav(bookForm, contentPanel);
         }
 
         private void authorAddBtn_Click(object sender, EventArgs e)
@@ -155,7 +157,8 @@ namespace Intership_7_Library.Presentation
 
         private void authorEditBtn_Click(object sender, EventArgs e)
         {
-
+            var authorForm = new AuthorEdit(_authorRepo);
+            Nav(authorForm, contentPanel);
         }
 
         private void publisherAddBtn_Click(object sender, EventArgs e)
@@ -172,7 +175,8 @@ namespace Intership_7_Library.Presentation
 
         private void publisherEditBtn_Click(object sender, EventArgs e)
         {
-
+           var publisherForm = new PublisherEdit(_publisherRepo);
+            Nav(publisherForm, contentPanel);
         }
 
         private void staffAddBtn_Click(object sender, EventArgs e)

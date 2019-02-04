@@ -11,18 +11,17 @@ using Internship_7_Library.Domain.Repositories.Book;
 
 namespace Intership_7_Library.Presentation.Publisher_forms
 {
-    public partial class PublisherRemove : Form
+    public partial class PublisherEdit : Form
     {
         private readonly PublisherRepo _publisherRepo;
         private int _index;
-        public PublisherRemove(PublisherRepo publisherRepo)
+        public PublisherEdit(PublisherRepo publisherRepo)
         {
             InitializeComponent();
             _publisherRepo = publisherRepo;
             _index = 0;
             SetData();
         }
-
         private bool SetData()
         {
             if (_publisherRepo.GetAllPublisher().Count == 0)
@@ -36,9 +35,10 @@ namespace Intership_7_Library.Presentation.Publisher_forms
             countryTextBox.Text = _publisherRepo.GetAllPublisher()[_index].Country;
             return true;
         }
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            _publisherRepo.RemovePublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId);
+            _publisherRepo.EditPublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId, nameTextBox.Text,
+                countryTextBox.Text);
             _index = 0;
             SetData();
         }
@@ -59,6 +59,5 @@ namespace Intership_7_Library.Presentation.Publisher_forms
             _index++;
             if (!SetData()) _index--;
         }
-
     }
 }

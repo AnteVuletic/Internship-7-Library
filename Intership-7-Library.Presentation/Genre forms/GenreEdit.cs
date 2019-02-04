@@ -11,18 +11,17 @@ using Internship_7_Library.Domain.Repositories.Book;
 
 namespace Intership_7_Library.Presentation.Genre_forms
 {
-    public partial class GenreRemove : Form
+    public partial class GenreEdit : Form
     {
         private readonly GenreRepo _genreRepo;
         private int _index;
-        public GenreRemove(GenreRepo genreRepo)
+        public GenreEdit(GenreRepo genreRepo)
         {
             InitializeComponent();
             _genreRepo = genreRepo;
             _index = 0;
             SetData();
         }
-
         public bool SetData()
         {
             if (_genreRepo.GetAllGenres().Count == 0)
@@ -31,10 +30,17 @@ namespace Intership_7_Library.Presentation.Genre_forms
                 descriptionTextBox.Text = "";
             }
             if (_genreRepo.GetAllGenres().Count <= _index || _index < 0)
-            return false;
+                return false;
             genreTextBox.Text = _genreRepo.GetAllGenres()[_index].Name;
             descriptionTextBox.Text = _genreRepo.GetAllGenres()[_index].Description;
             return true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _genreRepo.EditGenre(_genreRepo.GetAllGenres()[_index].GenreId, genreTextBox.Text, descriptionTextBox.Text);
+            _index = 0;
+            SetData();
         }
         private void btnPrev_Click(object sender, EventArgs e)
         {
@@ -51,13 +57,5 @@ namespace Intership_7_Library.Presentation.Genre_forms
         {
             Close();
         }
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            _genreRepo.RemoveGenre(_genreRepo.GetAllGenres()[_index].GenreId);
-            _index = 0;
-            SetData();
-        }
-
-
     }
 }
