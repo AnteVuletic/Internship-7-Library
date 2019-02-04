@@ -14,10 +14,10 @@ namespace Intership_7_Library.Presentation.Institution_forms
     public partial class InstitutionAdd : Form
     {
         private readonly InstitutionRepo _institutionRepo;
-        public InstitutionAdd(InstitutionRepo institutionRepo)
+        public InstitutionAdd()
         {
             InitializeComponent();
-            _institutionRepo = institutionRepo;
+            _institutionRepo = new InstitutionRepo();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

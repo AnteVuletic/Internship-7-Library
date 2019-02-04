@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_7_Library.Domain.Repositories;
 using Internship_7_Library.Domain.Repositories.Member;
 
 namespace Intership_7_Library.Presentation.Subscriber_forms
@@ -16,11 +17,12 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
         private readonly SubscriberRepo _subscriberRepo;
         private readonly SubscriptionRepo _subscriptionRepo;
         private bool _firstIteration;
-        public SubscriberAdd(SubscriptionRepo subscriptionRepo, SubscriberRepo subscriberRepo)
+        public SubscriberAdd()
         {
             InitializeComponent();
-            _subscriptionRepo = subscriptionRepo;
-            _subscriberRepo = subscriberRepo;
+            var personRepo = new PersonRepo();
+            _subscriptionRepo = new SubscriptionRepo();
+            _subscriberRepo = new SubscriberRepo(personRepo);
             _firstIteration = true;
             NewForm();
         }

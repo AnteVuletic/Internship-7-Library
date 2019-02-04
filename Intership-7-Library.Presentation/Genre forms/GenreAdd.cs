@@ -14,10 +14,10 @@ namespace Intership_7_Library.Presentation.Genre
     public partial class GenreAdd : Form
     {
         private readonly GenreRepo _genreRepo;
-        public GenreAdd(GenreRepo genreRepo)
+        public GenreAdd()
         {
             InitializeComponent();
-            _genreRepo = genreRepo;
+            _genreRepo = new GenreRepo();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

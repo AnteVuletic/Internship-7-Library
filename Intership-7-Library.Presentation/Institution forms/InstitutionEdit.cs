@@ -15,10 +15,10 @@ namespace Intership_7_Library.Presentation.Institution_forms
     {
         private readonly InstitutionRepo _institutionRepo;
         private int _index;
-        public InstitutionEdit(InstitutionRepo institutionRepo)
+        public InstitutionEdit()
         {
             InitializeComponent();
-            _institutionRepo = institutionRepo;
+            _institutionRepo = new InstitutionRepo();
             _index = 0;
             SetData();
         }

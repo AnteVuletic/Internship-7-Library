@@ -14,10 +14,10 @@ namespace Intership_7_Library.Presentation.Subscription_forms
     public partial class SubscriptionAdd : Form
     {
         private readonly SubscriptionRepo _subscriptionRepo;
-        public SubscriptionAdd(SubscriptionRepo subscriptionRepo)
+        public SubscriptionAdd()
         {
             InitializeComponent();
-            _subscriptionRepo = subscriptionRepo;
+            _subscriptionRepo = new SubscriptionRepo();
         }
 
         public void NewForm()

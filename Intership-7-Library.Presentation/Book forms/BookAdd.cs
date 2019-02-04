@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_7_Library.Domain.Repositories;
 using Internship_7_Library.Domain.Repositories.Book;
 
 namespace Intership_7_Library.Presentation.Book_forms
@@ -19,14 +20,15 @@ namespace Intership_7_Library.Presentation.Book_forms
         private readonly PublisherRepo _publisherRepo;
         private readonly AuthorRepo _authorRepo;
         private bool _firstIteration;
-        public BookAdd(TypeBookRepo typeBookRepo, BookRepo bookRepo, GenreRepo genreRepo, PublisherRepo publisherRepo,AuthorRepo authorRepo)
+        public BookAdd()
         {
             InitializeComponent();
-            _typeBookRepo = typeBookRepo;
-            _bookRepo = bookRepo;
-            _genreRepo = genreRepo;
-            _publisherRepo = publisherRepo;
-            _authorRepo = authorRepo;
+            var _personRepo = new PersonRepo();
+            _bookRepo = new BookRepo();
+            _typeBookRepo = new TypeBookRepo(_bookRepo);
+            _genreRepo = new GenreRepo();
+            _publisherRepo = new PublisherRepo();
+            _authorRepo = new AuthorRepo(_personRepo);
             _firstIteration = true;
             StartingPoint();
         }

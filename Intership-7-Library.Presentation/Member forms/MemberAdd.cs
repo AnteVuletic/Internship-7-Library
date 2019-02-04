@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_7_Library.Domain.Repositories;
 using Internship_7_Library.Domain.Repositories.Member;
 
 namespace Intership_7_Library.Presentation.Member_forms
@@ -16,11 +17,12 @@ namespace Intership_7_Library.Presentation.Member_forms
         private readonly MemberRepo _memberRepo;
         private readonly InstitutionRepo _institutionRepo;
         private bool _firstIteration;
-        public MemberAdd(MemberRepo memberRepo, InstitutionRepo institutionRepo)
+        public MemberAdd()
         {
             InitializeComponent();
-            _memberRepo = memberRepo;
-            _institutionRepo = institutionRepo;
+            var personRepo = new PersonRepo();
+            _memberRepo = new MemberRepo(personRepo);
+            _institutionRepo = new InstitutionRepo();
             _firstIteration = true;
             NewForm();
         }

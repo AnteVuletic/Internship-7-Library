@@ -15,10 +15,10 @@ namespace Intership_7_Library.Presentation.Institution_forms
     {
         private readonly InstitutionRepo _institutionRepo;
         private int _index;
-        public InstitutionRemove(InstitutionRepo institutionRepo)
+        public InstitutionRemove()
         {
             InitializeComponent();
-            _institutionRepo = institutionRepo;
+            _institutionRepo = new InstitutionRepo();
             _index = 0;
             SetData();
         }

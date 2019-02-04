@@ -15,10 +15,10 @@ namespace Intership_7_Library.Presentation.Genre_forms
     {
         private readonly GenreRepo _genreRepo;
         private int _index;
-        public GenreEdit(GenreRepo genreRepo)
+        public GenreEdit()
         {
             InitializeComponent();
-            _genreRepo = genreRepo;
+            _genreRepo = new GenreRepo();
             _index = 0;
             SetData();
         }

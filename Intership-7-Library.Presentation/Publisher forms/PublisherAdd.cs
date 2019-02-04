@@ -14,10 +14,10 @@ namespace Intership_7_Library.Presentation.Publisher__forms
     public partial class PublisherAdd : Form
     {
         private readonly PublisherRepo _publisherRepo;
-        public PublisherAdd(PublisherRepo publisherRepo)
+        public PublisherAdd()
         {
             InitializeComponent();
-            _publisherRepo = publisherRepo;
+            _publisherRepo = new PublisherRepo();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

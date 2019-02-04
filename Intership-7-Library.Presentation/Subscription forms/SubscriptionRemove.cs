@@ -15,10 +15,10 @@ namespace Intership_7_Library.Presentation.Subscription_forms
     {
         private readonly SubscriptionRepo _subscriptionRepo;
         private int _index;
-        public SubscriptionRemove(SubscriptionRepo subscriptionRepo)
+        public SubscriptionRemove()
         {
             InitializeComponent();
-            _subscriptionRepo = subscriptionRepo;
+            _subscriptionRepo = new SubscriptionRepo();
             _index = 0;
             SetData();
         }

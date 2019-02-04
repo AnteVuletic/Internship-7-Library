@@ -15,10 +15,10 @@ namespace Intership_7_Library.Presentation.Publisher_forms
     {
         private readonly PublisherRepo _publisherRepo;
         private int _index;
-        public PublisherEdit(PublisherRepo publisherRepo)
+        public PublisherEdit()
         {
             InitializeComponent();
-            _publisherRepo = publisherRepo;
+            _publisherRepo = new PublisherRepo();
             _index = 0;
             SetData();
         }

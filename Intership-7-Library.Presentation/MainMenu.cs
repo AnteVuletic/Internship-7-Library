@@ -29,33 +29,9 @@ namespace Intership_7_Library.Presentation
         private bool _isBookManager;
         private bool _isStaffManager;
         private bool _isMemberManager;
-        private readonly GenreRepo _genreRepo;
-        private readonly BookRepo _bookRepo;
-        private readonly PersonRepo _personRepo;
-        private readonly AuthorRepo _authorRepo;
-        private readonly TypeBookRepo _typeBookRepo;
-        private readonly InstitutionRepo _institutionRepo;
-        private readonly MemberRepo _memberRepo;
-        private readonly SubscriptionRepo _subscriptionRepo;
-        private readonly SubscriberRepo _subscriberRepo;
-        private readonly RentRepo _rentRepo;
-        private readonly StaffRepo _staffRepo;
-        private readonly PublisherRepo _publisherRepo;
         public MainMenu()
         {
             InitializeComponent();
-            _genreRepo = new GenreRepo();
-            _bookRepo = new BookRepo();
-            _personRepo = new PersonRepo();
-            _authorRepo = new AuthorRepo(_personRepo);
-            _typeBookRepo = new TypeBookRepo(_bookRepo);
-            _institutionRepo = new InstitutionRepo();
-            _memberRepo = new MemberRepo(_personRepo);
-            _subscriptionRepo = new SubscriptionRepo();
-            _subscriberRepo = new SubscriberRepo(_personRepo);
-            _rentRepo = new RentRepo();
-            _staffRepo = new StaffRepo(_personRepo);
-            _publisherRepo = new PublisherRepo();
         }
 
         public void Nav(Form form, Panel panel)
@@ -109,103 +85,103 @@ namespace Intership_7_Library.Presentation
 
         private void genreAddBtn_Click(object sender, EventArgs e)
         {
-            var genreForm = new GenreAdd(_genreRepo);
+            var genreForm = new GenreAdd();
             Nav(genreForm,contentPanel);
         }
 
         private void genreRemBtn_Click(object sender, EventArgs e)
         {
-            var genreForm = new GenreRemove(_genreRepo);
+            var genreForm = new GenreRemove();
             Nav(genreForm,contentPanel);
         }
 
         private void genreEditBtn_Click(object sender, EventArgs e)
         {
-            var genreForm = new GenreEdit(_genreRepo);
+            var genreForm = new GenreEdit();
             Nav(genreForm,contentPanel);
         }
 
         private void bookAddBtn_Click(object sender, EventArgs e)
         {
-            var bookForm = new BookAdd(_typeBookRepo, _bookRepo, _genreRepo, _publisherRepo, _authorRepo);
+            var bookForm = new BookAdd();
             Nav(bookForm,contentPanel);
         }
 
         private void bookRemBtn_Click(object sender, EventArgs e)
         {
-            var bookForm = new BookRemove(_typeBookRepo);
+            var bookForm = new BookRemove();
             Nav(bookForm,contentPanel);
         }
 
         private void bookEditBtn_Click(object sender, EventArgs e)
         {
-            var bookForm = new BookEdit(_typeBookRepo, _authorRepo, _publisherRepo,_genreRepo);
+            var bookForm = new BookEdit();
             Nav(bookForm, contentPanel);
         }
 
         private void authorAddBtn_Click(object sender, EventArgs e)
         {
-            var authorForm = new AuthorAdd(_authorRepo);
+            var authorForm = new AuthorAdd();
             Nav(authorForm, contentPanel);
         }
 
         private void authorRemBtn_Click(object sender, EventArgs e)
         {
-            var authorForm = new AuthorRemove(_authorRepo);
+            var authorForm = new AuthorRemove();
             Nav(authorForm,contentPanel);
         }
 
         private void authorEditBtn_Click(object sender, EventArgs e)
         {
-            var authorForm = new AuthorEdit(_authorRepo);
+            var authorForm = new AuthorEdit();
             Nav(authorForm, contentPanel);
         }
 
         private void publisherAddBtn_Click(object sender, EventArgs e)
         {
-            var publisherForm = new PublisherAdd(_publisherRepo);
+            var publisherForm = new PublisherAdd();
             Nav(publisherForm,contentPanel);
         }
 
         private void publisherRemBtn_Click(object sender, EventArgs e)
         {
-            var publisherForm = new PublisherRemove(_publisherRepo);
+            var publisherForm = new PublisherRemove();
             Nav(publisherForm,contentPanel);
         }
 
         private void publisherEditBtn_Click(object sender, EventArgs e)
         {
-           var publisherForm = new PublisherEdit(_publisherRepo);
+           var publisherForm = new PublisherEdit();
             Nav(publisherForm, contentPanel);
         }
 
         private void staffAddBtn_Click(object sender, EventArgs e)
         {
-            var staffForm = new StaffAdd(_staffRepo);
+            var staffForm = new StaffAdd();
             Nav(staffForm,contentPanel);
         }
 
         private void staffRemBtn_Click(object sender, EventArgs e)
         {
-            var staffForm = new StaffRemove(_staffRepo);
+            var staffForm = new StaffRemove();
             Nav(staffForm, contentPanel);
         }
 
         private void staffEditBtn_Click(object sender, EventArgs e)
         {
-            var staffForm = new StaffEdit(_staffRepo);
+            var staffForm = new StaffEdit();
             Nav(staffForm,contentPanel);
         }
 
         private void subTypeAddBtn_Click(object sender, EventArgs e)
         {
-            var subTypeForm = new SubscriptionAdd(_subscriptionRepo);
+            var subTypeForm = new SubscriptionAdd();
             Nav(subTypeForm, contentPanel);
         }
 
         private void subTypeRemBtn_Click(object sender, EventArgs e)
         {
-            var subTypeForm = new SubscriptionRemove(_subscriptionRepo);
+            var subTypeForm = new SubscriptionRemove();
             Nav(subTypeForm, contentPanel);
         }
 
@@ -216,13 +192,13 @@ namespace Intership_7_Library.Presentation
 
         private void subAddBtn_Click(object sender, EventArgs e)
         {
-            var subForm = new SubscriberAdd(_subscriptionRepo, _subscriberRepo);
+            var subForm = new SubscriberAdd();
             Nav(subForm, contentPanel);
         }
 
         private void subRemoveBtn_Click(object sender, EventArgs e)
         {
-            var subForm = new SubscriberRemove(_subscriberRepo);
+            var subForm = new SubscriberRemove();
             Nav(subForm,contentPanel);
         }
 
@@ -233,37 +209,37 @@ namespace Intership_7_Library.Presentation
 
         private void instAddBtn_Click(object sender, EventArgs e)
         {
-            var instForm = new InstitutionAdd(_institutionRepo);
+            var instForm = new InstitutionAdd();
             Nav(instForm,contentPanel);
         }
 
         private void instRemBtn_Click(object sender, EventArgs e)
         {
-            var instForm = new InstitutionRemove(_institutionRepo);
+            var instForm = new InstitutionRemove();
             Nav(instForm, contentPanel);
         }
 
         private void instEditBtn_Click(object sender, EventArgs e)
         {
-            var instForm = new InstitutionEdit(_institutionRepo);
+            var instForm = new InstitutionEdit();
             Nav(instForm,contentPanel);
         }
 
         private void memberAddBtn_Click(object sender, EventArgs e)
         {
-            var memberForm = new MemberAdd(_memberRepo, _institutionRepo);
+            var memberForm = new MemberAdd();
             Nav(memberForm, contentPanel);
         }
 
         private void memberRemBtn_Click(object sender, EventArgs e)
         {
-            var memberForm = new MemberRemove(_memberRepo);
+            var memberForm = new MemberRemove();
             Nav(memberForm,contentPanel);
         }
 
         private void memberEditBtn_Click(object sender, EventArgs e)
         {
-            var memberForm = new MemberEdit(_memberRepo, _institutionRepo);
+            var memberForm = new MemberEdit();
             Nav(memberForm, contentPanel);
         }
 

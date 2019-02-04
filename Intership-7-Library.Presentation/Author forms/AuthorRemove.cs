@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_7_Library.Domain.Repositories;
 using Internship_7_Library.Domain.Repositories.Book;
 
 namespace Intership_7_Library.Presentation.Author_forms
@@ -15,10 +16,11 @@ namespace Intership_7_Library.Presentation.Author_forms
     {
         private readonly AuthorRepo _authorRepo;
         private int _index;
-        public AuthorRemove(AuthorRepo authorRepo)
+        public AuthorRemove()
         {
             InitializeComponent();
-            _authorRepo = authorRepo;
+            var personRepo = new PersonRepo();
+            _authorRepo = new AuthorRepo(personRepo);
             _index = 0;
             SetData();
         }

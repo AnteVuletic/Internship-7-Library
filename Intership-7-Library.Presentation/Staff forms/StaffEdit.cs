@@ -17,10 +17,11 @@ namespace Intership_7_Library.Presentation.Staff_forms
         private readonly StaffRepo _staffRepo;
         private int _index;
         private bool _firstIteration;
-        public StaffEdit(StaffRepo staffRepo)
+        public StaffEdit()
         {
             InitializeComponent();
-            _staffRepo = staffRepo;
+            var personRepo = new PersonRepo();
+            _staffRepo = new StaffRepo(personRepo);
             _index = 0;
             _firstIteration = true;
             SetData();

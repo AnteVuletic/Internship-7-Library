@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_7_Library.Domain.Repositories;
 using Internship_7_Library.Domain.Repositories.Book;
 
 namespace Intership_7_Library.Presentation
@@ -14,10 +15,12 @@ namespace Intership_7_Library.Presentation
     public partial class AuthorAdd : Form
     {
         private readonly AuthorRepo _authorRepo;
-        public AuthorAdd(AuthorRepo authorRepo)
+
+        public AuthorAdd()
         {
             InitializeComponent();
-            _authorRepo = authorRepo;
+            var personRepo = new PersonRepo();
+            _authorRepo = new AuthorRepo(personRepo);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

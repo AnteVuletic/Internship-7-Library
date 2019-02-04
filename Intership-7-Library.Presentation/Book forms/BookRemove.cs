@@ -17,10 +17,11 @@ namespace Intership_7_Library.Presentation.Book_forms
     {
         private readonly TypeBookRepo _typeBook;
         private int _index;
-        public BookRemove(TypeBookRepo typeBook)
+        public BookRemove()
         {
             InitializeComponent();
-            _typeBook = typeBook;
+            var bookRepo = new BookRepo();
+            _typeBook = new TypeBookRepo(bookRepo);
             _index = 0;
             SetData();
         }
