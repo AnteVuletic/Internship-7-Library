@@ -58,7 +58,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
             subscriberFound.Person.Surname = surname;
             subscriberFound.Person.DateOfBirth = dateOfBirth;
             subscriberFound.DateOfRenewal = dateOfRenewal;
-            subscriberFound.TypeSubscription = subType;
+            subscriberFound.TypeSubscription = _context.Subscriptions.FirstOrDefault(sub => sub.Category == subType.Category);
             _context.SaveChanges();
             return true;
         }

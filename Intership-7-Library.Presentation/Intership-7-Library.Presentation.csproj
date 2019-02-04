@@ -186,6 +186,12 @@
     <Compile Include="Subscriber forms\SubscriberAdd.Designer.cs">
       <DependentUpon>SubscriberAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subscriber forms\SubscriberEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subscriber forms\SubscriberEdit.Designer.cs">
+      <DependentUpon>SubscriberEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subscriber forms\SubscriberRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,12 @@
     </Compile>
     <Compile Include="Subscription forms\SubscriptionAdd.Designer.cs">
       <DependentUpon>SubscriptionAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subscription forms\SubscriptionEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subscription forms\SubscriptionEdit.Designer.cs">
+      <DependentUpon>SubscriptionEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Subscription forms\SubscriptionRemove.cs">
       <SubType>Form</SubType>
@@ -282,11 +294,17 @@
     <EmbeddedResource Include="Subscriber forms\SubscriberAdd.resx">
       <DependentUpon>SubscriberAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subscriber forms\SubscriberEdit.resx">
+      <DependentUpon>SubscriberEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subscriber forms\SubscriberRemove.resx">
       <DependentUpon>SubscriberRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subscription forms\SubscriptionAdd.resx">
       <DependentUpon>SubscriptionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subscription forms\SubscriptionEdit.resx">
+      <DependentUpon>SubscriptionEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subscription forms\SubscriptionRemove.resx">
       <DependentUpon>SubscriptionRemove.cs</DependentUpon>

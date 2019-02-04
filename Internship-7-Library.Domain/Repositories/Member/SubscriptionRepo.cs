@@ -57,6 +57,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
             subFound.Category = category;
             subFound.BookLimitAtOnce = bookLimitAtOnce;
             subFound.PricePerMonth = pricePerMonth;
+            _context.SaveChanges();
             return true;
         }
 

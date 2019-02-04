@@ -187,7 +187,8 @@ namespace Intership_7_Library.Presentation
 
         private void subTypeEditBtn_Click(object sender, EventArgs e)
         {
-
+            var subTypeForm = new SubscriptionEdit();
+            Nav(subTypeForm,contentPanel);
         }
 
         private void subAddBtn_Click(object sender, EventArgs e)
@@ -204,7 +205,8 @@ namespace Intership_7_Library.Presentation
 
         private void subEditBtn_Click(object sender, EventArgs e)
         {
-
+            var subForm = new SubscriberEdit();
+            Nav(subForm, contentPanel);
         }
 
         private void instAddBtn_Click(object sender, EventArgs e)
