@@ -43,7 +43,10 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var subFound = GetSubscription(subscriptionId);
             if (subFound == null) return false;
-            _context.Subscriptions.Remove(subFound);
+            if (_context.Subscribers.FirstOrDefault(sub =>
+                    sub.TypeSubscription.SubscriptionId == subFound.SubscriptionId) != null) return false;
+            _context.Subscriptions.Remove(_context.Subscriptions.FirstOrDefault(sub => subFound.Category == subFound.Category));
+            _context.SaveChanges();
             return true;
         }
 

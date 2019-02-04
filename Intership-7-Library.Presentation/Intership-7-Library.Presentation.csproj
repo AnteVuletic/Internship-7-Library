@@ -132,17 +132,35 @@
     <Compile Include="Staff forms\StaffAdd.Designer.cs">
       <DependentUpon>StaffAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Staff forms\StaffRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff forms\StaffRemove.Designer.cs">
+      <DependentUpon>StaffRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subscriber forms\SubscriberAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Subscriber forms\SubscriberAdd.Designer.cs">
       <DependentUpon>SubscriberAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subscriber forms\SubscriberRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subscriber forms\SubscriberRemove.Designer.cs">
+      <DependentUpon>SubscriberRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subscription forms\SubscriptionAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Subscription forms\SubscriptionAdd.Designer.cs">
       <DependentUpon>SubscriptionAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subscription forms\SubscriptionRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subscription forms\SubscriptionRemove.Designer.cs">
+      <DependentUpon>SubscriptionRemove.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Author forms\AuthorRemove.resx">
       <DependentUpon>AuthorRemove.cs</DependentUpon>
@@ -195,11 +213,20 @@
     <EmbeddedResource Include="Staff forms\StaffAdd.resx">
       <DependentUpon>StaffAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Staff forms\StaffRemove.resx">
+      <DependentUpon>StaffRemove.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subscriber forms\SubscriberAdd.resx">
       <DependentUpon>SubscriberAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subscriber forms\SubscriberRemove.resx">
+      <DependentUpon>SubscriberRemove.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subscription forms\SubscriptionAdd.resx">
       <DependentUpon>SubscriptionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subscription forms\SubscriptionRemove.resx">
+      <DependentUpon>SubscriptionRemove.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

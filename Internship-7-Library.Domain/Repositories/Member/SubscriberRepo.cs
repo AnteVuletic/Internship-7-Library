@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories.Member
 {
@@ -26,7 +27,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
 
         public List<Subscriber> GetAllSubscriber()
         {
-            return _context.Subscribers.ToList();
+            return _context.Subscribers.Include(sub => sub.Person).Include(sub => sub.TypeSubscription).ToList();
         }
 
         public bool AddSubscriber(string name,string surname,DateTime dateOfBirth, DateTime dateOfRenewal,Subscription subType )
@@ -42,8 +43,9 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var subscriberFound = GetSubscriber(subscriberId);
             if (subscriberFound == null) return false;
-            _personRepo.RemovePerson(subscriberFound.Person.PersonId);
             _context.Remove(subscriberFound);
+            _context.Persons.Remove(
+                _context.Persons.FirstOrDefault(prsn => prsn.PersonId == subscriberFound.Person.PersonId));
             _context.SaveChanges();
             return true;
         }

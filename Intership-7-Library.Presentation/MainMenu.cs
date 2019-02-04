@@ -183,7 +183,8 @@ namespace Intership_7_Library.Presentation
 
         private void staffRemBtn_Click(object sender, EventArgs e)
         {
-
+            var staffForm = new StaffRemove(_staffRepo);
+            Nav(staffForm, contentPanel);
         }
 
         private void staffEditBtn_Click(object sender, EventArgs e)
@@ -199,7 +200,8 @@ namespace Intership_7_Library.Presentation
 
         private void subTypeRemBtn_Click(object sender, EventArgs e)
         {
-
+            var subTypeForm = new SubscriptionRemove(_subscriptionRepo);
+            Nav(subTypeForm, contentPanel);
         }
 
         private void subTypeEditBtn_Click(object sender, EventArgs e)
@@ -215,7 +217,8 @@ namespace Intership_7_Library.Presentation
 
         private void subRemoveBtn_Click(object sender, EventArgs e)
         {
-
+            var subForm = new SubscriberRemove(_subscriberRepo);
+            Nav(subForm,contentPanel);
         }
 
         private void subEditBtn_Click(object sender, EventArgs e)

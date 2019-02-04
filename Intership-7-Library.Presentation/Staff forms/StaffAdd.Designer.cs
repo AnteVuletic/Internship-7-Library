@@ -69,7 +69,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(366, 9);
+            this.label1.Location = new System.Drawing.Point(382, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 73);
             this.label1.TabIndex = 12;
@@ -79,7 +79,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(299, 234);
+            this.label2.Location = new System.Drawing.Point(302, 234);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 24);
             this.label2.TabIndex = 13;
@@ -89,7 +89,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(299, 274);
+            this.label3.Location = new System.Drawing.Point(302, 274);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 24);
             this.label3.TabIndex = 14;
@@ -99,7 +99,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(299, 314);
+            this.label4.Location = new System.Drawing.Point(302, 314);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 24);
             this.label4.TabIndex = 15;
@@ -109,7 +109,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(299, 354);
+            this.label5.Location = new System.Drawing.Point(302, 354);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 24);
             this.label5.TabIndex = 16;
@@ -118,7 +118,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTextBox.Location = new System.Drawing.Point(413, 229);
+            this.nameTextBox.Location = new System.Drawing.Point(416, 229);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(197, 29);
             this.nameTextBox.TabIndex = 17;
@@ -126,7 +126,7 @@
             // surnameTextBox
             // 
             this.surnameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.surnameTextBox.Location = new System.Drawing.Point(413, 274);
+            this.surnameTextBox.Location = new System.Drawing.Point(416, 274);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(197, 29);
             this.surnameTextBox.TabIndex = 18;
@@ -135,7 +135,7 @@
             // 
             this.dateOfBirthPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateOfBirthPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateOfBirthPicker.Location = new System.Drawing.Point(413, 312);
+            this.dateOfBirthPicker.Location = new System.Drawing.Point(416, 312);
             this.dateOfBirthPicker.Name = "dateOfBirthPicker";
             this.dateOfBirthPicker.Size = new System.Drawing.Size(197, 26);
             this.dateOfBirthPicker.TabIndex = 19;
@@ -145,7 +145,7 @@
             this.comboPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboPosition.FormattingEnabled = true;
-            this.comboPosition.Location = new System.Drawing.Point(413, 350);
+            this.comboPosition.Location = new System.Drawing.Point(416, 350);
             this.comboPosition.Name = "comboPosition";
             this.comboPosition.Size = new System.Drawing.Size(197, 28);
             this.comboPosition.TabIndex = 20;

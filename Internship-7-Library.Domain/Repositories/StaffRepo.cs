@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
 using Internship_7_Library.Data.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories
 {
@@ -26,7 +27,7 @@ namespace Internship_7_Library.Domain.Repositories
 
         public List<Staff> GetAllStaff()
         {
-            return _context.Staff.ToList();
+            return _context.Staff.Include(stf => stf.Person).ToList();
         }
 
         public bool AddStaff(string name, string surname,DateTime dateOfBirth, StaffPosition position )
@@ -42,8 +43,9 @@ namespace Internship_7_Library.Domain.Repositories
         {
             var staffFound = GetStaff(staffId);
             if (staffFound == null) return false;
-            _personRepo.RemovePerson(staffFound.Person.PersonId);
             _context.Staff.Remove(staffFound);
+            _context.Persons.Remove(_context.Persons.Find(staffFound.Person.PersonId));
+            _context.SaveChanges();
             return true;
         }
 
