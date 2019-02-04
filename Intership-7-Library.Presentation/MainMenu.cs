@@ -10,10 +10,13 @@ using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories;
 using Internship_7_Library.Domain.Repositories.Book;
 using Internship_7_Library.Domain.Repositories.Member;
+using Intership_7_Library.Presentation.Author_forms;
 using Intership_7_Library.Presentation.Book_forms;
 using Intership_7_Library.Presentation.Genre;
+using Intership_7_Library.Presentation.Genre_forms;
 using Intership_7_Library.Presentation.Institution_forms;
 using Intership_7_Library.Presentation.Member_forms;
+using Intership_7_Library.Presentation.Publisher_forms;
 using Intership_7_Library.Presentation.Publisher__forms;
 using Intership_7_Library.Presentation.Staff_forms;
 using Intership_7_Library.Presentation.Subscriber_forms;
@@ -23,9 +26,9 @@ namespace Intership_7_Library.Presentation
 {
     public partial class MainMenu : Form
     {
-        private bool _isBookManager = false;
-        private bool _isStaffManager = false;
-        private bool _isMemberManager = false;
+        private bool _isBookManager;
+        private bool _isStaffManager;
+        private bool _isMemberManager;
         private readonly GenreRepo _genreRepo;
         private readonly BookRepo _bookRepo;
         private readonly PersonRepo _personRepo;
@@ -112,7 +115,8 @@ namespace Intership_7_Library.Presentation
 
         private void genreRemBtn_Click(object sender, EventArgs e)
         {
-            
+            var genreForm = new GenreRemove(_genreRepo);
+            Nav(genreForm,contentPanel);
         }
 
         private void genreEditBtn_Click(object sender, EventArgs e)
@@ -128,7 +132,8 @@ namespace Intership_7_Library.Presentation
 
         private void bookRemBtn_Click(object sender, EventArgs e)
         {
-
+            var bookForm = new BookRemove(_typeBookRepo);
+            Nav(bookForm,contentPanel);
         }
 
         private void bookEditBtn_Click(object sender, EventArgs e)
@@ -144,7 +149,8 @@ namespace Intership_7_Library.Presentation
 
         private void authorRemBtn_Click(object sender, EventArgs e)
         {
-
+            var authorForm = new AuthorRemove(_authorRepo);
+            Nav(authorForm,contentPanel);
         }
 
         private void authorEditBtn_Click(object sender, EventArgs e)
@@ -160,7 +166,8 @@ namespace Intership_7_Library.Presentation
 
         private void publisherRemBtn_Click(object sender, EventArgs e)
         {
-
+            var publisherForm = new PublisherRemove(_publisherRepo);
+            Nav(publisherForm,contentPanel);
         }
 
         private void publisherEditBtn_Click(object sender, EventArgs e)
@@ -224,7 +231,8 @@ namespace Intership_7_Library.Presentation
 
         private void instRemBtn_Click(object sender, EventArgs e)
         {
-
+            var instForm = new InstitutionRemove(_institutionRepo);
+            Nav(instForm, contentPanel);
         }
 
         private void instEditBtn_Click(object sender, EventArgs e)
@@ -240,7 +248,8 @@ namespace Intership_7_Library.Presentation
 
         private void memberRemBtn_Click(object sender, EventArgs e)
         {
-
+            var memberForm = new MemberRemove(_memberRepo);
+            Nav(memberForm,contentPanel);
         }
 
         private void memberEditBtn_Click(object sender, EventArgs e)

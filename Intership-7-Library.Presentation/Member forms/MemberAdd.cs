@@ -32,7 +32,7 @@ namespace Intership_7_Library.Presentation.Member_forms
                 new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day - 2);
             nameTextBox.Text = "";
             surnameTextBox.Text = "";
-            institutionComboBox.Text = "";
+            institutionComboBox.SelectedIndex = -1;
             isProfessorCheckBox.Checked = false;
             if (!_firstIteration) return;
             foreach (var institution in _institutionRepo.GetAllInstitutions())

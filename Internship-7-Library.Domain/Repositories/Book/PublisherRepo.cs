@@ -42,6 +42,8 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var publisherFound = GetPublisher(publisherId);
             if (publisherFound == null) return false;
+            if (_context.TypeBooks.FirstOrDefault(typbk => typbk.Publisher.PublisherId == publisherFound.PublisherId) !=
+                null) return false;
             _context.Publishers.Remove(publisherFound);
             _context.SaveChanges();
             return true;

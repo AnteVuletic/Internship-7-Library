@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Author forms\AuthorRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Author forms\AuthorRemove.Designer.cs">
+      <DependentUpon>AuthorRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="Book forms\BookAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Book forms\BookAdd.Designer.cs">
       <DependentUpon>BookAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Book forms\BookRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Book forms\BookRemove.Designer.cs">
+      <DependentUpon>BookRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="Genre forms\GenreAdd.cs">
       <SubType>Form</SubType>
@@ -58,11 +70,23 @@
     <Compile Include="Genre forms\GenreAdd.Designer.cs">
       <DependentUpon>GenreAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Genre forms\GenreRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Genre forms\GenreRemove.Designer.cs">
+      <DependentUpon>GenreRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="Institution forms\InstitutionAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Institution forms\InstitutionAdd.Designer.cs">
       <DependentUpon>InstitutionAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Institution forms\InstitutionRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Institution forms\InstitutionRemove.Designer.cs">
+      <DependentUpon>InstitutionRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
@@ -75,6 +99,12 @@
     </Compile>
     <Compile Include="Member forms\MemberAdd.Designer.cs">
       <DependentUpon>MemberAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member forms\MemberRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member forms\MemberRemove.Designer.cs">
+      <DependentUpon>MemberRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +119,12 @@
     </Compile>
     <Compile Include="Publisher forms\PublisherAdd.Designer.cs">
       <DependentUpon>PublisherAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Publisher forms\PublisherRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Publisher forms\PublisherRemove.Designer.cs">
+      <DependentUpon>PublisherRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="Staff forms\StaffAdd.cs">
       <SubType>Form</SubType>
@@ -108,20 +144,35 @@
     <Compile Include="Subscription forms\SubscriptionAdd.Designer.cs">
       <DependentUpon>SubscriptionAdd.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Author forms\AuthorRemove.resx">
+      <DependentUpon>AuthorRemove.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Book forms\BookAdd.resx">
       <DependentUpon>BookAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Book forms\BookRemove.resx">
+      <DependentUpon>BookRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Genre forms\GenreAdd.resx">
       <DependentUpon>GenreAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Genre forms\GenreRemove.resx">
+      <DependentUpon>GenreRemove.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Institution forms\InstitutionAdd.resx">
       <DependentUpon>InstitutionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Institution forms\InstitutionRemove.resx">
+      <DependentUpon>InstitutionRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Member forms\MemberAdd.resx">
       <DependentUpon>MemberAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member forms\MemberRemove.resx">
+      <DependentUpon>MemberRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Publisher forms\PublisherAdd.resx">
       <DependentUpon>PublisherAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Publisher forms\PublisherRemove.resx">
+      <DependentUpon>PublisherRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff forms\StaffAdd.resx">
       <DependentUpon>StaffAdd.cs</DependentUpon>

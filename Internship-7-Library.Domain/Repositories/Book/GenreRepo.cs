@@ -43,6 +43,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var foundGenre = GetGenre(genreId);
             if (foundGenre == null) return false;
+            if (_context.TypeBooks.FirstOrDefault(bk => bk.Genre.GenreId == foundGenre.GenreId) != null) return false;
             _context.Genres.Remove(foundGenre);
             _context.SaveChanges();
             return true;

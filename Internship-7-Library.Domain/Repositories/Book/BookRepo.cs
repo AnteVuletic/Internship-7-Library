@@ -34,16 +34,6 @@ namespace Internship_7_Library.Domain.Repositories.Book
             _context.SaveChanges();
         }
 
-        public void RemoveAllBooks(TypeBook bookInfo)
-        {
-            foreach (var book in _context.Books.Where(bk => bk.BookInfo.Title == bookInfo.Title))
-            {
-                _context.Remove(book);
-            }
-
-            _context.SaveChanges();
-        }
-
         public bool MarkRuined(TypeBook bookInfo)
         {
             var physicalBookCopyFound = _context.Books.FirstOrDefault(bk => bk.BookInfo == bookInfo && bk.State == BookState.Available);

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories.Book
 {
@@ -31,9 +32,9 @@ namespace Internship_7_Library.Domain.Repositories.Book
             return _context.Authors.First(ath => ath.AuthorPerson.Name == matchAuthor[0].Value && ath.AuthorPerson.Surname == matchAuthor[1].Value);
         }
 
-        public List<Person> GetAllAuthors()
+        public List<Author> GetAllAuthors()
         {
-            return _context.Authors.Select(ath => ath.AuthorPerson).ToList();
+            return _context.Authors.Include(ath => ath.AuthorPerson).ToList();
         }
 
         public bool AddAuthor(string name, string surname)
@@ -49,8 +50,9 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var authorFound = _context.Authors.Find(authorId);
             if (authorFound == null) return false;
-            _personRepo.RemovePerson(authorFound.AuthorPerson.PersonId);
-            _context.Authors.Remove(authorFound);
+            if (_context.TypeBooks.FirstOrDefault(tybk => tybk.AuthorInfo.AuthorId == authorId) != null) return false;
+            _context.Authors.Remove(_context.Authors.Find(authorId));
+            _context.Persons.Remove(_context.Persons.First(prsn => prsn.PersonId == authorFound.AuthorPerson.PersonId));
             _context.SaveChanges();
             return true;
 

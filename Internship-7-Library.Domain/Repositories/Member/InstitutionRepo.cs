@@ -43,6 +43,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var institutionFound = GetInstitution(institutionId);
             if (institutionFound == null) return false;
+            if (_context.Members.FirstOrDefault(memb => memb.Institution.InstitutionId == institutionFound.InstitutionId) != null) return false;
             _context.Institutions.Remove(institutionFound);
             _context.SaveChanges();
             return true;

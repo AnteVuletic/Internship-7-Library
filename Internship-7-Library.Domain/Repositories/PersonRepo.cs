@@ -49,7 +49,7 @@ namespace Internship_7_Library.Domain.Repositories
         {
             var personFound = GetPerson(personId);
             if (personFound == null) return false;
-            _context.Persons.Remove(personFound);
+            _context.Persons.Remove(_context.Persons.Find(personId));
             _context.SaveChanges();
             return true;
         }

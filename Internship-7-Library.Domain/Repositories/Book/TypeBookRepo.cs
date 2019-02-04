@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories.Book
 {
@@ -25,7 +26,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public List<TypeBook> GetAllBookTypes()
         {
-            return _context.TypeBooks.ToList();
+            return _context.TypeBooks.Include(tybk => tybk.Genre).Include(tybk => tybk.AuthorInfo.AuthorPerson).Include(tybk => tybk.Publisher).Include(tybk => tybk.PhysicalBooks).ToList();
         }
 
         public bool AddBooks(string title, string numPages, Genre genre, Author author, Publisher publisher, int numberOfCopies)
@@ -45,8 +46,8 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var bookFound = GetBookType(typeBookId);
             if (bookFound == null) return false;
-            _bookRepo.RemoveAllBooks(bookFound);
-            _context.TypeBooks.Remove(bookFound);
+            _context.Books.RemoveRange(_context.Books.Where(bk => bk.BookInfo.TypeBookId == typeBookId));
+            _context.TypeBooks.Remove(_context.TypeBooks.Find(typeBookId));
             _context.SaveChanges();
             return true;
         }

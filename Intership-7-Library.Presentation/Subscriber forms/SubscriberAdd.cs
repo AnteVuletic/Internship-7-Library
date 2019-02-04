@@ -29,7 +29,7 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
         {
             nameTextBox.Text = "";
             surnameTextBox.Text = "";
-            typeSubCombo.Text = "";
+            typeSubCombo.SelectedIndex = -1;
             dateOfBirthPicker.MaxDate = new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day);
             dateOfBirthPicker.Value =
                 new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day - 2);

@@ -147,6 +147,7 @@
             // 
             // genreCombo
             // 
+            this.genreCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genreCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.genreCombo.FormattingEnabled = true;
             this.genreCombo.Location = new System.Drawing.Point(444, 290);
@@ -156,6 +157,7 @@
             // 
             // authorCombo
             // 
+            this.authorCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.authorCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.authorCombo.FormattingEnabled = true;
             this.authorCombo.Location = new System.Drawing.Point(444, 328);
@@ -165,6 +167,7 @@
             // 
             // publisherCombo
             // 
+            this.publisherCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.publisherCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.publisherCombo.FormattingEnabled = true;
             this.publisherCombo.Location = new System.Drawing.Point(444, 363);

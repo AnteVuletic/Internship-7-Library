@@ -33,9 +33,9 @@ namespace Intership_7_Library.Presentation.Book_forms
 
         private void StartingPoint()
         {
-            genreCombo.Text = "";
-            publisherCombo.Text = "";
-            authorCombo.Text = "";
+            genreCombo.SelectedIndex = -1;
+            publisherCombo.SelectedIndex= -1;
+            authorCombo.SelectedIndex = -1;
             titleTextBox.Text = "";
             numberTextBox.Text = "";
             copiesTextBox.Text = "";
@@ -52,7 +52,7 @@ namespace Intership_7_Library.Presentation.Book_forms
 
             foreach (var author in _authorRepo.GetAllAuthors())
             {
-                authorCombo.Items.Add(author.Name + " " + author.Surname);
+                authorCombo.Items.Add(author.AuthorPerson.Name + " " + author.AuthorPerson.Surname);
             }
             _firstIteration = false;
         }

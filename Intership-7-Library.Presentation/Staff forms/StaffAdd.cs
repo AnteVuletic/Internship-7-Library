@@ -31,7 +31,7 @@ namespace Intership_7_Library.Presentation.Staff_forms
                 new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day - 2);
             nameTextBox.Text = "";
             surnameTextBox.Text = "";
-            comboPosition.Text = "";
+            comboPosition.SelectedIndex = -1;
             if (!_firstIteration) return;
             foreach (var positionName in Enum.GetNames(typeof(StaffPosition)))
             {
