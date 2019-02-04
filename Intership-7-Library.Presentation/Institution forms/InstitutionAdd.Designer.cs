@@ -122,6 +122,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InstitutionAdd";
             this.Text = "InstitutionAdd";
+            this.Load += new System.EventHandler(this.InstitutionAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

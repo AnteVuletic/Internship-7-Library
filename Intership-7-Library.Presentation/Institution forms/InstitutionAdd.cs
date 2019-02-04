@@ -31,5 +31,10 @@ namespace Intership_7_Library.Presentation.Institution_forms
         {
             Close();
         }
+
+        private void InstitutionAdd_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

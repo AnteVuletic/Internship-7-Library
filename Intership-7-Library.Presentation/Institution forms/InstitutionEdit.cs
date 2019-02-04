@@ -7,40 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Internship_7_Library.Domain.Repositories.Book;
+using Internship_7_Library.Domain.Repositories.Member;
 
-namespace Intership_7_Library.Presentation.Author_forms
+namespace Intership_7_Library.Presentation.Institution_forms
 {
-    public partial class AuthorEdit : Form
+    public partial class InstitutionEdit : Form
     {
-        private readonly AuthorRepo _authorRepo;
+        private readonly InstitutionRepo _institutionRepo;
         private int _index;
-        public AuthorEdit(AuthorRepo authorRepo)
+        public InstitutionEdit(InstitutionRepo institutionRepo)
         {
             InitializeComponent();
-            _authorRepo = authorRepo;
+            _institutionRepo = institutionRepo;
             _index = 0;
             SetData();
         }
-
-        private bool SetData()
+        public bool SetData()
         {
-            if (_authorRepo.GetAllAuthors().Count == 0)
+            if (_institutionRepo.GetAllInstitutions().Count == 0)
             {
                 nameTextBox.Text = "";
-                surnameTextBox.Text = "";
+                addressTextBox.Text = "";
             }
-            if (_authorRepo.GetAllAuthors().Count <= _index || _index < 0) return false;
-            nameTextBox.Text = _authorRepo.GetAllAuthors()[_index].AuthorPerson.Name;
-            surnameTextBox.Text = _authorRepo.GetAllAuthors()[_index].AuthorPerson.Surname;
+
+            if (_institutionRepo.GetAllInstitutions().Count <= _index || _index < 0) return false;
+            nameTextBox.Text = _institutionRepo.GetAllInstitutions()[_index].Name;
+            addressTextBox.Text = _institutionRepo.GetAllInstitutions()[_index].Address;
             return true;
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _authorRepo.EditAuthor(_authorRepo.GetAllAuthors()[_index].AuthorId, nameTextBox.Text, surnameTextBox.Text);
+            _institutionRepo.EditInstitution(_institutionRepo.GetAllInstitutions()[_index].InstitutionId,
+                nameTextBox.Text, addressTextBox.Text);
             SetData();
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();

@@ -56,8 +56,9 @@ namespace Internship_7_Library.Domain.Repositories.Member
             if (memberFound == null) return false;
             memberFound.Person.Name = name;
             memberFound.Person.Surname = surname;
+            memberFound.Person.DateOfBirth = dateOfBirth;
             memberFound.Professor = professor;
-            memberFound.Institution = institution;
+            memberFound.Institution = _context.Institutions.Find(institution.InstitutionId);
             _context.SaveChanges();
             return true;
         }

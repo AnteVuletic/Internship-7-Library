@@ -193,7 +193,8 @@ namespace Intership_7_Library.Presentation
 
         private void staffEditBtn_Click(object sender, EventArgs e)
         {
-
+            var staffForm = new StaffEdit(_staffRepo);
+            Nav(staffForm,contentPanel);
         }
 
         private void subTypeAddBtn_Click(object sender, EventArgs e)
@@ -244,7 +245,8 @@ namespace Intership_7_Library.Presentation
 
         private void instEditBtn_Click(object sender, EventArgs e)
         {
-
+            var instForm = new InstitutionEdit(_institutionRepo);
+            Nav(instForm,contentPanel);
         }
 
         private void memberAddBtn_Click(object sender, EventArgs e)
@@ -261,7 +263,8 @@ namespace Intership_7_Library.Presentation
 
         private void memberEditBtn_Click(object sender, EventArgs e)
         {
-
+            var memberForm = new MemberEdit(_memberRepo, _institutionRepo);
+            Nav(memberForm, contentPanel);
         }
 
     }

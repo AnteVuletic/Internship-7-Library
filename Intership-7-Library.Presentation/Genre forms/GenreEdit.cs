@@ -39,7 +39,6 @@ namespace Intership_7_Library.Presentation.Genre_forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             _genreRepo.EditGenre(_genreRepo.GetAllGenres()[_index].GenreId, genreTextBox.Text, descriptionTextBox.Text);
-            _index = 0;
             SetData();
         }
         private void btnPrev_Click(object sender, EventArgs e)

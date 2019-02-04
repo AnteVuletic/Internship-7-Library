@@ -100,6 +100,12 @@
     <Compile Include="Institution forms\InstitutionAdd.Designer.cs">
       <DependentUpon>InstitutionAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Institution forms\InstitutionEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Institution forms\InstitutionEdit.Designer.cs">
+      <DependentUpon>InstitutionEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Institution forms\InstitutionRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,12 @@
     </Compile>
     <Compile Include="Member forms\MemberAdd.Designer.cs">
       <DependentUpon>MemberAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member forms\MemberEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member forms\MemberEdit.Designer.cs">
+      <DependentUpon>MemberEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Member forms\MemberRemove.cs">
       <SubType>Form</SubType>
@@ -155,6 +167,12 @@
     </Compile>
     <Compile Include="Staff forms\StaffAdd.Designer.cs">
       <DependentUpon>StaffAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Staff forms\StaffEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff forms\StaffEdit.Designer.cs">
+      <DependentUpon>StaffEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Staff forms\StaffRemove.cs">
       <SubType>Form</SubType>
@@ -213,6 +231,9 @@
     <EmbeddedResource Include="Institution forms\InstitutionAdd.resx">
       <DependentUpon>InstitutionAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Institution forms\InstitutionEdit.resx">
+      <DependentUpon>InstitutionEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Institution forms\InstitutionRemove.resx">
       <DependentUpon>InstitutionRemove.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Member forms\MemberAdd.resx">
       <DependentUpon>MemberAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member forms\MemberEdit.resx">
+      <DependentUpon>MemberEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Member forms\MemberRemove.resx">
       <DependentUpon>MemberRemove.cs</DependentUpon>
@@ -248,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Staff forms\StaffAdd.resx">
       <DependentUpon>StaffAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff forms\StaffEdit.resx">
+      <DependentUpon>StaffEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff forms\StaffRemove.resx">
       <DependentUpon>StaffRemove.cs</DependentUpon>

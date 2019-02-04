@@ -51,7 +51,7 @@ namespace Intership_7_Library.Presentation.Member_forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }

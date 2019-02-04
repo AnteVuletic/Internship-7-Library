@@ -77,7 +77,6 @@ namespace Intership_7_Library.Presentation.Book_forms
                 _genreRepo.GetGenreByText(genreCombo.Text),
                 _authorRepo.GetAuthorByName(authorCombo.Text), _publisherRepo.GetPublisherByName(publisherCombo.Text),
                 int.Parse(copiesTextBox.Text));
-            _index = 0;
             SetData();
         }
 
