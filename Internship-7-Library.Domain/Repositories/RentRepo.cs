@@ -26,7 +26,7 @@ namespace Internship_7_Library.Domain.Repositories
         {
             if (_context.Rents.Any(rnt => rnt.Book == book && rnt.Person == person && rnt.ReturnDate == null))
                 return false;
-            _context.Rents.Add(new Rent(person,book, DateTime.Now));
+            _context.Rents.Add(new Rent(_context.Persons.Find(person.PersonId),_context.Books.Find(book.BookId), DateTime.Now));
             _context.SaveChanges();
             return true;
         }

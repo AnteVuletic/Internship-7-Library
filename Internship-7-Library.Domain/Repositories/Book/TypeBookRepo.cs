@@ -26,6 +26,10 @@ namespace Internship_7_Library.Domain.Repositories.Book
             return _context.TypeBooks.Find(typeBookId);
         }
 
+        public TypeBook GetBookTypeByTitle(string title)
+        {
+            return _context.TypeBooks.FirstOrDefault(typBk => typBk.Title == title);
+        }
         public List<TypeBook> GetAllBookTypes()
         {
             return _context.TypeBooks.Include(tybk => tybk.Genre).Include(tybk => tybk.AuthorInfo.AuthorPerson).Include(tybk => tybk.Publisher).Include(tybk => tybk.PhysicalBooks).ToList();

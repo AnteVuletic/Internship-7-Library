@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
 using Internship_7_Library.Data.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories.Book
 {
@@ -18,9 +19,9 @@ namespace Internship_7_Library.Domain.Repositories.Book
             _context = new Context();
         }
 
-        public Data.Entities.Models.Book GetBook(int bookId)
+        public Data.Entities.Models.Book GetBookIfAvailable(int bookId)
         {
-            return _context.Books.Find(bookId);
+            return _context.Books.Include(bk => bk.BookInfo).FirstOrDefault(bk => bk.BookInfo.TypeBookId == bookId && bk.State == BookState.Available);
         }
 
         public List<Data.Entities.Models.Book> GetBooks()
@@ -52,6 +53,5 @@ namespace Internship_7_Library.Domain.Repositories.Book
             _context.SaveChanges();
             return true;
         }
-
     }
 }

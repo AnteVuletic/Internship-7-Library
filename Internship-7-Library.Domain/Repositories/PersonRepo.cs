@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories
 {
@@ -22,9 +23,17 @@ namespace Internship_7_Library.Domain.Repositories
             return _context.Persons.Find(personId);
         }
 
+        public Person GetPersonByNameSurnameDate(string name, string surname,DateTime dateOfBirth)
+        {
+            return _context.Persons.FirstOrDefault(prsn => prsn.Name == name && prsn.Surname == surname && prsn.DateOfBirth == dateOfBirth);
+        }
         public List<Person> GetAllPersons()
         {
             return _context.Persons.ToList();
+        }
+        public List<Person> GetAllPersonsDetails()
+        {
+            return _context.Persons.Include(prsn => prsn.InstitutionMembers).Include(prsn => prsn.Subscribers).ToList();
         }
 
         public bool AddPerson(string name, string surname,DateTime? dateOfBirth)

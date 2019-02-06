@@ -614,6 +614,7 @@
             this.rntBookBtn.TabIndex = 15;
             this.rntBookBtn.Text = "Rent book";
             this.rntBookBtn.UseVisualStyleBackColor = false;
+            this.rntBookBtn.Click += new System.EventHandler(this.rntBookBtn_Click);
             // 
             // returnBookbtn
             // 

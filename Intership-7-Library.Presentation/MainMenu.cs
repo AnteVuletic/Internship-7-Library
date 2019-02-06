@@ -18,6 +18,7 @@ using Intership_7_Library.Presentation.Institution_forms;
 using Intership_7_Library.Presentation.Member_forms;
 using Intership_7_Library.Presentation.Publisher_forms;
 using Intership_7_Library.Presentation.Publisher__forms;
+using Intership_7_Library.Presentation.Rent_forms;
 using Intership_7_Library.Presentation.Staff_forms;
 using Intership_7_Library.Presentation.Subscriber_forms;
 using Intership_7_Library.Presentation.Subscription_forms;
@@ -245,5 +246,10 @@ namespace Intership_7_Library.Presentation
             Nav(memberForm, contentPanel);
         }
 
+        private void rntBookBtn_Click(object sender, EventArgs e)
+        {
+            var rntForm = new RentOut();
+            Nav(rntForm,contentPanel);
+        }
     }
 }
