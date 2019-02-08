@@ -42,11 +42,5 @@ namespace Internship_7_Library.Domain.Repositories
             _context.SaveChanges();
             return true;
         }
-
-        public IQueryable<Rent> AllBooksRentedBySubscribersWithExpiredSub(TimeSpan timeForExpiring)
-        {
-            return _context.Rents.Where(rnt =>
-                rnt.Person.Subscribers.ToList().Count != 0 && rnt.Person.Subscribers.Where(sub => sub.DateOfRenewal - DateTime.Now < timeForExpiring).ToList().Count != 0);
-        }
     }
 }

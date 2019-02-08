@@ -66,6 +66,7 @@
             this.rntBookBtn = new System.Windows.Forms.Button();
             this.returnBookbtn = new System.Windows.Forms.Button();
             this.expiredBtn = new System.Windows.Forms.Button();
+            this.btnExtend = new System.Windows.Forms.Button();
             this.bookMngDrpDwn.SuspendLayout();
             this.staffMngDrpDwn.SuspendLayout();
             this.memberMngDrpDwn.SuspendLayout();
@@ -598,6 +599,7 @@
             this.navbarFlowPanel.Controls.Add(this.rntBookBtn);
             this.navbarFlowPanel.Controls.Add(this.returnBookbtn);
             this.navbarFlowPanel.Controls.Add(this.expiredBtn);
+            this.navbarFlowPanel.Controls.Add(this.btnExtend);
             this.navbarFlowPanel.Location = new System.Drawing.Point(2, 1);
             this.navbarFlowPanel.Name = "navbarFlowPanel";
             this.navbarFlowPanel.Size = new System.Drawing.Size(219, 630);
@@ -636,10 +638,24 @@
             this.expiredBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expiredBtn.Location = new System.Drawing.Point(3, 198);
             this.expiredBtn.Name = "expiredBtn";
-            this.expiredBtn.Size = new System.Drawing.Size(187, 30);
+            this.expiredBtn.Size = new System.Drawing.Size(187, 57);
             this.expiredBtn.TabIndex = 17;
-            this.expiredBtn.Text = "Rented by expired sub";
+            this.expiredBtn.Text = "Expired subs currently renting book";
             this.expiredBtn.UseVisualStyleBackColor = false;
+            this.expiredBtn.Click += new System.EventHandler(this.expiredBtn_Click);
+            // 
+            // btnExtend
+            // 
+            this.btnExtend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnExtend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExtend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtend.Location = new System.Drawing.Point(3, 261);
+            this.btnExtend.Name = "btnExtend";
+            this.btnExtend.Size = new System.Drawing.Size(187, 57);
+            this.btnExtend.TabIndex = 18;
+            this.btnExtend.Text = "Extend subscription by month";
+            this.btnExtend.UseVisualStyleBackColor = false;
+            this.btnExtend.Click += new System.EventHandler(this.btnExtend_Click);
             // 
             // MainMenu
             // 
@@ -699,6 +715,7 @@
         private System.Windows.Forms.Button rntBookBtn;
         private System.Windows.Forms.Button returnBookbtn;
         private System.Windows.Forms.Button expiredBtn;
+        private System.Windows.Forms.Button btnExtend;
     }
 }
 

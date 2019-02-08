@@ -162,6 +162,12 @@
     <Compile Include="Publisher forms\PublisherRemove.Designer.cs">
       <DependentUpon>PublisherRemove.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rent forms\RentByExpired.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rent forms\RentByExpired.Designer.cs">
+      <DependentUpon>RentByExpired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rent forms\RentOut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,12 @@
     </Compile>
     <Compile Include="Subscriber forms\SubscriberEdit.Designer.cs">
       <DependentUpon>SubscriberEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subscriber forms\SubscriberExtendByMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subscriber forms\SubscriberExtendByMonth.Designer.cs">
+      <DependentUpon>SubscriberExtendByMonth.cs</DependentUpon>
     </Compile>
     <Compile Include="Subscriber forms\SubscriberRemove.cs">
       <SubType>Form</SubType>
@@ -294,6 +306,9 @@
     <EmbeddedResource Include="Publisher forms\PublisherRemove.resx">
       <DependentUpon>PublisherRemove.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Rent forms\RentByExpired.resx">
+      <DependentUpon>RentByExpired.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Rent forms\RentOut.resx">
       <DependentUpon>RentOut.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subscriber forms\SubscriberEdit.resx">
       <DependentUpon>SubscriberEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subscriber forms\SubscriberExtendByMonth.resx">
+      <DependentUpon>SubscriberExtendByMonth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subscriber forms\SubscriberRemove.resx">
       <DependentUpon>SubscriberRemove.cs</DependentUpon>

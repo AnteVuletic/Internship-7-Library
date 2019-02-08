@@ -257,5 +257,17 @@ namespace Intership_7_Library.Presentation
             var rntForm = new RentReturn();
             Nav(rntForm,contentPanel);
         }
+
+        private void expiredBtn_Click(object sender, EventArgs e)
+        {
+            var rntFrom = new RentByExpired();
+            Nav(rntFrom, contentPanel);
+        }
+
+        private void btnExtend_Click(object sender, EventArgs e)
+        {
+            var subFrm = new SubscriberExtendByMonth();
+            Nav(subFrm,contentPanel);
+        }
     }
 }

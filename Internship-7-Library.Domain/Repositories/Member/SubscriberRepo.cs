@@ -25,9 +25,15 @@ namespace Internship_7_Library.Domain.Repositories.Member
             return _context.Subscribers.Find(subscriberId);
         }
 
+        public Subscriber GetSubscriberByNameSurnameBirth(string name, string surname,DateTime dateOfBirth)
+        {
+            return _context.Subscribers.FirstOrDefault(sub =>
+                sub.Person.Name == name && sub.Person.Surname == surname &&
+                sub.Person.DateOfBirth.Value == dateOfBirth);
+        }
         public List<Subscriber> GetAllSubscriber()
         {
-            return _context.Subscribers.Include(sub => sub.Person).Include(sub => sub.TypeSubscription).ToList();
+            return _context.Subscribers.Include(sub => sub.Person).ThenInclude(prsn => prsn.Rents).Include(sub => sub.TypeSubscription).ToList();
         }
 
         public bool AddSubscriber(string name,string surname,DateTime dateOfBirth, DateTime dateOfRenewal,Subscription subType )
@@ -59,6 +65,17 @@ namespace Internship_7_Library.Domain.Repositories.Member
             subscriberFound.Person.DateOfBirth = dateOfBirth;
             subscriberFound.DateOfRenewal = dateOfRenewal;
             subscriberFound.TypeSubscription = _context.Subscriptions.FirstOrDefault(sub => sub.Category == subType.Category);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool ExtendSubscriptionByMonth(int subscriberId)
+        {
+            var subscriberFound = GetSubscriber(subscriberId);
+            if (subscriberFound == null) return false;
+            subscriberFound.DateOfRenewal = subscriberFound.DateOfRenewal +
+                                            new TimeSpan(DateTime.DaysInMonth(subscriberFound.DateOfRenewal.Year,
+                                                subscriberFound.DateOfRenewal.Month),0,0,0);
             _context.SaveChanges();
             return true;
         }
