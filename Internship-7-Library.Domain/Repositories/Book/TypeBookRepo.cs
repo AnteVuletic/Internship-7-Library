@@ -32,7 +32,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         }
         public List<TypeBook> GetAllBookTypes()
         {
-            return _context.TypeBooks.Include(tybk => tybk.Genre).Include(tybk => tybk.AuthorInfo.AuthorPerson).Include(tybk => tybk.Publisher).Include(tybk => tybk.PhysicalBooks).ToList();
+            return _context.TypeBooks.Include(tybk => tybk.Genre).Include(tybk => tybk.AuthorInfo.AuthorPerson).Include(tybk => tybk.Publisher).Include(tybk => tybk.PhysicalBooks).Include(tybk => tybk.PhysicalBooks).ThenInclude(bk => bk.Rents).ToList();
         }
 
         public bool AddBooks(string title, string numPages, Genre genre, Author author, Publisher publisher, int numberOfCopies)

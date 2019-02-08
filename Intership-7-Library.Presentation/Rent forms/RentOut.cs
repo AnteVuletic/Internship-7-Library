@@ -23,6 +23,8 @@ namespace Intership_7_Library.Presentation.Rent_forms
         private readonly BookRepo _bookRepo;
         private readonly TypeBookRepo _typeBookRepo;
         private readonly RentRepo _rentRepo;
+        private MatchCollection _personMatches;
+        private DateTime _personDateOfBirth;
         public RentOut()
         {
             InitializeComponent();
@@ -43,12 +45,13 @@ namespace Intership_7_Library.Presentation.Rent_forms
             bookSearchTexBox.Visible = false;
             bookListView.Visible = false;
             AdjustMemberList();
-            AdjustBookList();
         }
         private void AdjustMemberList()
         {
             listOfMembers.Items.Clear();
-            foreach (var person in _personRepo.GetAllPersonsDetails().Where(prsn => prsn.Surname.Contains(memberSearchTextBox.Text) && ((prsn.InstitutionMembers.FirstOrDefault(memb => memb.Person.PersonId == prsn.PersonId) != null || prsn.Subscribers.FirstOrDefault(sub => sub.Person.PersonId == prsn.PersonId) != null))).ToList())
+            foreach (var person in _personRepo.GetAllPersonsDetails().Where(prsn => prsn.Surname.Contains(memberSearchTextBox.Text) 
+                                                                                    && ((prsn.InstitutionMembers.FirstOrDefault(memb => memb.Person.PersonId == prsn.PersonId) != null 
+                                                                                         || prsn.Subscribers.FirstOrDefault(sub => sub.Person.PersonId == prsn.PersonId) != null))).ToList())
             {
                 listOfMembers.Items.Add($"{person.Name} {person.Surname} {person.DateOfBirth.Value.ToString("dd/MM/yyyy")}");
             }
@@ -56,8 +59,28 @@ namespace Intership_7_Library.Presentation.Rent_forms
 
         private void AdjustBookList()
         {
+            var subscriberPicked = _subscriberRepo.GetAllSubscriber().FirstOrDefault(sub =>
+                sub.Person.Name == _personMatches[0].Value
+                && sub.Person.Surname == _personMatches[1].Value
+                && sub.Person.DateOfBirth.Value == _personDateOfBirth);
+            if (subscriberPicked != null)
+            {
+                if (subscriberPicked.TypeSubscription.BookLimitAtOnce <= _rentRepo.GetAllCurrentlyRented()
+                        .Count(rnt => rnt.PersonId == subscriberPicked.Person.PersonId))
+                return;
+            }
+            srchBookLabel.Visible = true;
+            bookSearchTexBox.Visible = true;
+            bookListView.Visible = true;
+            var personMatch = _personRepo.GetPersonByNameSurnameDate(_personMatches[0].Value, _personMatches[1].Value,
+                _personDateOfBirth);
             bookListView.Items.Clear();
-            foreach (var book in _typeBookRepo.GetAllBookTypes().Where(typBook => typBook.Title.Contains(bookSearchTexBox.Text) && typBook.PhysicalBooks.Count(bk => bk.State == BookState.Available) != 0))
+            foreach (var book in _typeBookRepo.GetAllBookTypes().Where(typBook =>
+            {
+                var typeBookInQuestion = typBook.Title.Contains(bookSearchTexBox.Text) && typBook.PhysicalBooks.Count(bk => bk.State == BookState.Available) != 0;
+                if (!typeBookInQuestion) return false;
+                return !typBook.PhysicalBooks.Any(bk => bk.Rents.Any(rnt => rnt.PersonId == personMatch.PersonId && !rnt.ReturnDate.HasValue));
+            }))
             {
                 bookListView.Items.Add($"{book.Title} by {book.AuthorInfo.AuthorPerson.Name} {book.AuthorInfo.AuthorPerson.Surname}");
             }
@@ -75,12 +98,18 @@ namespace Intership_7_Library.Presentation.Rent_forms
             }
             if (listOfMembers.SelectedIndices.Count != 0)
             {
+                var parseStringBeforeSpace = new Regex(@"[^\s]+");
                 listOfMembers.Items[listOfMembers.SelectedIndices[0]].BackColor = Color.Green;
+                _personMatches =  parseStringBeforeSpace.Matches(listOfMembers.SelectedItems[0].Text);
+                _personDateOfBirth = DateTime.ParseExact(_personMatches[2].Value, "dd/MM/yyyy", null);
+                AdjustBookList();
             }
-
-            srchBookLabel.Visible = true;
-            bookSearchTexBox.Visible = true;
-            bookListView.Visible = true;
+            else
+            {
+                srchBookLabel.Visible = false;
+                bookSearchTexBox.Visible = false;
+                bookListView.Visible = false;
+            }
         }
 
         private void bookSearchTexBox_TextChanged(object sender, EventArgs e)
@@ -97,11 +126,9 @@ namespace Intership_7_Library.Presentation.Rent_forms
         {
             var parseStringBeforeSpace = new Regex(@"[^\s]+");
             var stringTitleMatch = parseStringBeforeSpace.Match(bookListView.SelectedItems[0].Text);
-            var personMatches = parseStringBeforeSpace.Matches(listOfMembers.SelectedItems[0].Text);
-            var personDateOfBirth = DateTime.ParseExact(personMatches[2].Value,"dd/MM/yyyy",null);
             var book = _bookRepo.GetBookIfAvailable(
                 _typeBookRepo.GetBookTypeByTitle(stringTitleMatch.Value).TypeBookId);
-            if(_rentRepo.RentBook(book,_personRepo.GetPersonByNameSurnameDate(personMatches[0].Value, personMatches[1].Value,personDateOfBirth)))
+            if(_rentRepo.RentBook(book,_personRepo.GetPersonByNameSurnameDate(_personMatches[0].Value, _personMatches[1].Value,_personDateOfBirth)))
             InitFormInfo();
         }
 
