@@ -68,8 +68,8 @@ namespace Intership_7_Library.Presentation.Rent_forms
             bookListView.Items.Clear();
             foreach (var book in _bookRepo.GetBooks().Where(bk => bk.Rents.FirstOrDefault(rnt => rnt.Person.Name == _personMatches[0].Value 
                                                                                         && rnt.Person.Surname == _personMatches[1].Value 
-                                                                                        && rnt.Person.DateOfBirth.Value == DateTime.ParseExact(_personMatches[2].Value, "dd/MM/yyyy", null)) 
-                                                                  != null && bk.State == BookState.Rented))
+                                                                                        && rnt.Person.DateOfBirth.Value == DateTime.ParseExact(_personMatches[2].Value, "dd/MM/yyyy", null)
+                                                                                        && !rnt.ReturnDate.HasValue) != null))
             {
                 bookListView.Items.Add($"{book.BookInfo.Title} by {book.BookInfo.AuthorInfo.AuthorPerson.Name} {book.BookInfo.AuthorInfo.AuthorPerson.Surname}");
             }
@@ -81,8 +81,8 @@ namespace Intership_7_Library.Presentation.Rent_forms
             var bookInQuestion = _bookRepo.GetBooks().FirstOrDefault(bk => bk.BookInfo.Title == stringTitleMatch.Value
                                                                            && bk.Rents.FirstOrDefault(rnt => rnt.Person.Name == _personMatches[0].Value 
                                                                                                     && rnt.Person.Surname == _personMatches[1].Value 
-                                                                                                    && rnt.Person.DateOfBirth.Value == DateTime.ParseExact(_personMatches[2].Value,"dd/MM/yyyy",null))!= null
-                                                                           && bk.State == BookState.Rented);
+                                                                                                    && rnt.Person.DateOfBirth.Value == DateTime.ParseExact(_personMatches[2].Value,"dd/MM/yyyy",null)
+                                                                                                    && !rnt.ReturnDate.HasValue)!= null);
             var personInQuestion = _personRepo.GetAllPersonsDetails().FirstOrDefault(prsn =>
             {
                 if (prsn.Rents.Count == 0) return false;
