@@ -33,7 +33,7 @@ namespace Internship_7_Library.Domain.Repositories
         }
         public List<Person> GetAllPersonsDetails()
         {
-            return _context.Persons.Include(prsn => prsn.InstitutionMembers).Include(prsn => prsn.Subscribers).ToList();
+            return _context.Persons.Include(prsn => prsn.InstitutionMembers).Include(prsn => prsn.Subscribers).Include(prsn => prsn.Rents).ThenInclude(rnts => rnts.Book).ToList();
         }
 
         public bool AddPerson(string name, string surname,DateTime? dateOfBirth)

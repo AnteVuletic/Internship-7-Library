@@ -168,6 +168,12 @@
     <Compile Include="Rent forms\RentOut.Designer.cs">
       <DependentUpon>RentOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rent forms\RentReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rent forms\RentReturn.Designer.cs">
+      <DependentUpon>RentReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Staff forms\StaffAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rent forms\RentOut.resx">
       <DependentUpon>RentOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rent forms\RentReturn.resx">
+      <DependentUpon>RentReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff forms\StaffAdd.resx">
       <DependentUpon>StaffAdd.cs</DependentUpon>

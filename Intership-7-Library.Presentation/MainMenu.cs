@@ -251,5 +251,11 @@ namespace Intership_7_Library.Presentation
             var rntForm = new RentOut();
             Nav(rntForm,contentPanel);
         }
+
+        private void returnBookbtn_Click(object sender, EventArgs e)
+        {
+            var rntForm = new RentReturn();
+            Nav(rntForm,contentPanel);
+        }
     }
 }

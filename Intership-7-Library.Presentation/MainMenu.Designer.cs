@@ -627,6 +627,7 @@
             this.returnBookbtn.TabIndex = 16;
             this.returnBookbtn.Text = "Return book";
             this.returnBookbtn.UseVisualStyleBackColor = false;
+            this.returnBookbtn.Click += new System.EventHandler(this.returnBookbtn_Click);
             // 
             // expiredBtn
             // 

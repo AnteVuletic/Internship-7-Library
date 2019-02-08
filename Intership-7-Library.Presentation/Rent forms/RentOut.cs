@@ -102,10 +102,8 @@ namespace Intership_7_Library.Presentation.Rent_forms
             var book = _bookRepo.GetBookIfAvailable(
                 _typeBookRepo.GetBookTypeByTitle(stringTitleMatch.Value).TypeBookId);
             if(_rentRepo.RentBook(book,_personRepo.GetPersonByNameSurnameDate(personMatches[0].Value, personMatches[1].Value,personDateOfBirth)))
-            {
-                book.State = BookState.Rented;
-            }
             InitFormInfo();
         }
+
     }
 }

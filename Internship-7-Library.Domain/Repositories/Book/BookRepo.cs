@@ -26,7 +26,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public List<Data.Entities.Models.Book> GetBooks()
         {
-            return _context.Books.ToList();
+            return _context.Books.Include(bk => bk.Rents).ThenInclude(rnts => rnts.Person).Include(bk => bk.BookInfo).ThenInclude(bkInfo => bkInfo.AuthorInfo).ThenInclude(ath => ath.AuthorPerson).ToList();
         }
 
         public void AddBook(TypeBook bookInfo)
