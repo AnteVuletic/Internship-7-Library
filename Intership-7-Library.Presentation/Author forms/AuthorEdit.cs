@@ -29,8 +29,11 @@ namespace Intership_7_Library.Presentation.Author_forms
         {
             if (_authorRepo.GetAllAuthors().Count == 0)
             {
+                MessageBox.Show("No authors have been added yet", "Authors not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
+                btnSave.Enabled = false;
             }
             if (_authorRepo.GetAllAuthors().Count <= _index || _index < 0) return false;
             nameTextBox.Text = _authorRepo.GetAllAuthors()[_index].AuthorPerson.Name;
@@ -39,7 +42,13 @@ namespace Intership_7_Library.Presentation.Author_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _authorRepo.EditAuthor(_authorRepo.GetAllAuthors()[_index].AuthorId, nameTextBox.Text, surnameTextBox.Text);
+            if (!_authorRepo.EditAuthor(_authorRepo.GetAllAuthors()[_index].AuthorId, nameTextBox.Text,
+                surnameTextBox.Text))
+            {
+                MessageBox.Show("Error editing Author, publisher with name and surname already exists",
+                    "Author exists error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
 

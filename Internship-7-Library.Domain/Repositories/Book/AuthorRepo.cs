@@ -62,6 +62,8 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var authorFound = GetAuthor(authorId);
             if (authorFound == null) return false;
+            if (_context.Authors.Any(auth => auth.AuthorPerson.Name == name && auth.AuthorPerson.Surname == surname))
+                return false;
             authorFound.AuthorPerson.Name = name;
             authorFound.AuthorPerson.Surname = surname;
             _context.SaveChanges();

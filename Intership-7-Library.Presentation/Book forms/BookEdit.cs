@@ -55,6 +55,8 @@ namespace Intership_7_Library.Presentation.Book_forms
             }
             if (_typeBook.GetAllBookTypes().Count == 0)
             {
+                MessageBox.Show("No books have been added yet", "Book not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 titleTextBox.Text = "";
                 numberTextBox.Text = "";
                 genreCombo.Text = "";
@@ -62,6 +64,7 @@ namespace Intership_7_Library.Presentation.Book_forms
                 publisherCombo.Text = "";
                 publisherCombo.Text = "";
                 copiesTextBox.Text = "";
+                btnSave.Enabled = false;
             }
             if (_typeBook.GetAllBookTypes().Count <= _index || _index < 0) return false;
             titleTextBox.Text = _typeBook.GetAllBookTypes()[_index].Title;
@@ -76,11 +79,25 @@ namespace Intership_7_Library.Presentation.Book_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _typeBook.EditBook(_typeBook.GetAllBookTypes()[_index].TypeBookId, titleTextBox.Text, numberTextBox.Text,
+            var returnValue = _typeBook.EditBook(_typeBook.GetAllBookTypes()[_index].TypeBookId, titleTextBox.Text,
+                numberTextBox.Text,
                 _genreRepo.GetGenreByText(genreCombo.Text),
                 _authorRepo.GetAuthorByName(authorCombo.Text), _publisherRepo.GetPublisherByName(publisherCombo.Text),
                 int.Parse(copiesTextBox.Text));
-            SetData();
+            switch (returnValue)
+            {
+                case -1:
+                    MessageBox.Show("Book with same title and publisher already exists", "Book exists error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                case -2:
+                    MessageBox.Show("Number of copies cannot be negative", "Book copies negative error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                default:
+                    SetData();
+                    return;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

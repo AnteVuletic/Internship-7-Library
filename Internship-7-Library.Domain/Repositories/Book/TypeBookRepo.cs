@@ -58,11 +58,13 @@ namespace Internship_7_Library.Domain.Repositories.Book
             return true;
         }
 
-        public bool EditBook(int typeBookId, string title, string numPages, Genre genre, Author author,
+        public int EditBook(int typeBookId, string title, string numPages, Genre genre, Author author,
             Publisher publisher,int numberOfCopies)
         {
             var bookFound = GetBookType(typeBookId);
             var copiesOfBook = _context.Books.Count(bk => bk.BookInfo.TypeBookId == bookFound.TypeBookId);
+            if (numberOfCopies < 0) return -2;
+            if (_context.TypeBooks.Any(typbk => typbk.Title == title && typbk.Publisher.Name == publisher.Name)) return -1;
             if (copiesOfBook != numberOfCopies)
             {
                 var difference = copiesOfBook - numberOfCopies;
@@ -85,14 +87,14 @@ namespace Internship_7_Library.Domain.Repositories.Book
                     }
                 }
             }
-            if (bookFound == null) return false;
+            if (bookFound == null) return -3;
             bookFound.Title = title;
             bookFound.NumPages = numPages;
             bookFound.Genre = _context.Genres.Find(genre.GenreId);
             bookFound.AuthorInfo = _context.Authors.Find(author.AuthorId);
             bookFound.Publisher = _context.Publishers.Find(publisher.PublisherId);
             _context.SaveChanges();
-            return true;
+            return 1;
         }
     }
 }

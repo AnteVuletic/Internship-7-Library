@@ -60,6 +60,9 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var subscriberFound = GetSubscriber(subscriberId);
             if (subscriberFound == null) return false;
+            if (_context.Subscribers.Any(sub =>
+                sub.Person.Name == name && sub.Person.Surname == surname &&
+                sub.Person.DateOfBirth.Value == dateOfBirth)) return false;
             subscriberFound.Person.Name = name;
             subscriberFound.Person.Surname = surname;
             subscriberFound.Person.DateOfBirth = dateOfBirth;

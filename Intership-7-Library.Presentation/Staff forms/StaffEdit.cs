@@ -39,10 +39,13 @@ namespace Intership_7_Library.Presentation.Staff_forms
             }
             if (_staffRepo.GetAllStaff().Count == 0)
             {
+                MessageBox.Show("No staff have been added yet", "Staff not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
                 dateOfBirthPicker.Value = DateTime.Now;
                 comboPosition.Text = "";
+                btnSave.Enabled = false;
             }
 
             if (_staffRepo.GetAllStaff().Count <= _index || _index < 0) return false;
@@ -55,8 +58,13 @@ namespace Intership_7_Library.Presentation.Staff_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _staffRepo.EditStaff(_staffRepo.GetAllStaff()[_index].StaffId, nameTextBox.Text, surnameTextBox.Text,
-                dateOfBirthPicker.Value, (StaffPosition) Enum.Parse(typeof(StaffPosition), comboPosition.Text));
+            if (!_staffRepo.EditStaff(_staffRepo.GetAllStaff()[_index].StaffId, nameTextBox.Text, surnameTextBox.Text,
+                dateOfBirthPicker.Value, (StaffPosition) Enum.Parse(typeof(StaffPosition), comboPosition.Text)))
+            {
+                MessageBox.Show("This person already exists", "Person exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
 

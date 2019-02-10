@@ -41,11 +41,14 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
             }
             if (_subscriberRepo.GetAllSubscriber().Count == 0)
             {
+                MessageBox.Show("No subscriber has been added yet", "Subscriber not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
                 dateOfBirthPicker.Value = DateTime.Now;
                 typeSubCombo.Text = "";
                 dateOfRenewalPicker.Value = DateTime.Now;
+                btnSave.Enabled = false;
             }
 
             if (_subscriberRepo.GetAllSubscriber().Count <= _index || _index < 0) return false;
@@ -59,9 +62,15 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _subscriberRepo.EditSubscriber(_subscriberRepo.GetAllSubscriber()[_index].SubscriberId, nameTextBox.Text,
+            if (!_subscriberRepo.EditSubscriber(_subscriberRepo.GetAllSubscriber()[_index].SubscriberId,
+                nameTextBox.Text,
                 surnameTextBox.Text, dateOfBirthPicker.Value, dateOfRenewalPicker.Value,
-                _subscriptionRepo.GetSubscriptionByCategory(typeSubCombo.Text));
+                _subscriptionRepo.GetSubscriptionByCategory(typeSubCombo.Text)))
+            {
+                MessageBox.Show("This person is already an subscriber", "Subscriber exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
 

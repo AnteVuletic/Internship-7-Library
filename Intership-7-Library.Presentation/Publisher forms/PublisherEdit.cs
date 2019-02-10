@@ -26,8 +26,11 @@ namespace Intership_7_Library.Presentation.Publisher_forms
         {
             if (_publisherRepo.GetAllPublisher().Count == 0)
             {
+                MessageBox.Show("No publishers have been added yet", "Publisher not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 countryTextBox.Text = "";
+                btnSave.Enabled = false;
             }
 
             if (_publisherRepo.GetAllPublisher().Count <= _index || _index < 0) return false;
@@ -37,9 +40,13 @@ namespace Intership_7_Library.Presentation.Publisher_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _publisherRepo.EditPublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId, nameTextBox.Text,
-                countryTextBox.Text);
-            _index = 0;
+            if (!_publisherRepo.EditPublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId, nameTextBox.Text,
+                countryTextBox.Text))
+            {
+                MessageBox.Show("Publisher with this name already exists", "Publisher exists error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
 

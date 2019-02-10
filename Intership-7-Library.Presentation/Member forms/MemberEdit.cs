@@ -42,11 +42,14 @@ namespace Intership_7_Library.Presentation.Member_forms
 
             if (_memberRepo.GetAllMembers().Count == 0)
             {
+                MessageBox.Show("No student or professor has been added yet", "Member not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
                 dateOfBirthPicker.Value = DateTime.Now;
                 institutionComboBox.Text = "";
                 isProfessorCheckBox.Checked = false;
+                btnSave.Enabled = false;
             }
 
             if (_memberRepo.GetAllMembers().Count <= _index || _index < 0) return false;
@@ -59,9 +62,15 @@ namespace Intership_7_Library.Presentation.Member_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _memberRepo.EditMember(_memberRepo.GetAllMembers()[_index].MemberId, nameTextBox.Text, surnameTextBox.Text,
+            if (!_memberRepo.EditMember(_memberRepo.GetAllMembers()[_index].MemberId, nameTextBox.Text,
+                surnameTextBox.Text,
                 dateOfBirthPicker.Value, isProfessorCheckBox.Checked,
-                _institutionRepo.GetInstitutionByName(institutionComboBox.Text));
+                _institutionRepo.GetInstitutionByName(institutionComboBox.Text)))
+            {
+                MessageBox.Show("This person is already an member", "Member exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
         private void btnPrev_Click(object sender, EventArgs e)

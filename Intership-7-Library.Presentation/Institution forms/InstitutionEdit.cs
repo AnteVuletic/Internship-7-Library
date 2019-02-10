@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_7_Library.Domain.Repositories.Member;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Intership_7_Library.Presentation.Institution_forms
 {
@@ -26,8 +27,11 @@ namespace Intership_7_Library.Presentation.Institution_forms
         {
             if (_institutionRepo.GetAllInstitutions().Count == 0)
             {
+                MessageBox.Show("No institution has been added yet", "Institution not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 addressTextBox.Text = "";
+                btnSave.Enabled = false;
             }
 
             if (_institutionRepo.GetAllInstitutions().Count <= _index || _index < 0) return false;
@@ -38,8 +42,13 @@ namespace Intership_7_Library.Presentation.Institution_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _institutionRepo.EditInstitution(_institutionRepo.GetAllInstitutions()[_index].InstitutionId,
-                nameTextBox.Text, addressTextBox.Text);
+            if (!_institutionRepo.EditInstitution(_institutionRepo.GetAllInstitutions()[_index].InstitutionId,
+                nameTextBox.Text, addressTextBox.Text))
+            {
+                MessageBox.Show("Institution with that name already exists", "Institution exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
         private void btnCancel_Click(object sender, EventArgs e)

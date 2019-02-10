@@ -26,8 +26,11 @@ namespace Intership_7_Library.Presentation.Genre_forms
         {
             if (_genreRepo.GetAllGenres().Count == 0)
             {
+                MessageBox.Show("No genre has been added yet", "Genre not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 genreTextBox.Text = "";
                 descriptionTextBox.Text = "";
+                btnSave.Enabled = false;
             }
             if (_genreRepo.GetAllGenres().Count <= _index || _index < 0)
                 return false;
@@ -38,7 +41,13 @@ namespace Intership_7_Library.Presentation.Genre_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _genreRepo.EditGenre(_genreRepo.GetAllGenres()[_index].GenreId, genreTextBox.Text, descriptionTextBox.Text);
+            if (!_genreRepo.EditGenre(_genreRepo.GetAllGenres()[_index].GenreId, genreTextBox.Text,
+                descriptionTextBox.Text))
+            {
+                MessageBox.Show("Genre with this name already exists", "Genre exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
         private void btnPrev_Click(object sender, EventArgs e)

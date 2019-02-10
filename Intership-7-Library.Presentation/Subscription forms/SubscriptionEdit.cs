@@ -26,9 +26,12 @@ namespace Intership_7_Library.Presentation.Subscription_forms
         {
             if (_subscriptionRepo.GetAllSubscriptionTypes().Count == 0)
             {
+                MessageBox.Show("No subscription model has been added yet.", "Subscription model not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 catNameTextBox.Text = "";
                 bookLimitTextBox.Text = "";
                 priceTextBox.Text = "";
+                btnSave.Enabled = false;
             }
 
             if (_subscriptionRepo.GetAllSubscriptionTypes().Count <= _index || _index < 0) return false;
@@ -40,8 +43,13 @@ namespace Intership_7_Library.Presentation.Subscription_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _subscriptionRepo.EditSubscription(_subscriptionRepo.GetAllSubscriptionTypes()[_index].SubscriptionId,
-                catNameTextBox.Text, int.Parse(bookLimitTextBox.Text), int.Parse(priceTextBox.Text));
+            if (!_subscriptionRepo.EditSubscription(_subscriptionRepo.GetAllSubscriptionTypes()[_index].SubscriptionId,
+                catNameTextBox.Text, int.Parse(bookLimitTextBox.Text), int.Parse(priceTextBox.Text)))
+            {
+                MessageBox.Show("Subscription category with this name already exists",
+                    "Subscription model exists error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             SetData();
         }
         private void btnCancel_Click(object sender, EventArgs e)
