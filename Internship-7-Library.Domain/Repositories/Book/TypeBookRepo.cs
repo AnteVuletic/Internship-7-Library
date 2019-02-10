@@ -37,7 +37,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public bool AddBooks(string title, string numPages, Genre genre, Author author, Publisher publisher, int numberOfCopies)
         {
-            if (_context.TypeBooks.Any(typbk => typbk.Title == title)) return false;
+            if (_context.TypeBooks.Any(typbk => typbk.Title == title && typbk.Publisher.Name == publisher.Name)) return false;
             var bookInfo = new TypeBook(title, numPages, _context.Genres.Find(genre.GenreId), _context.Authors.Find(author.AuthorId), _context.Publishers.Find(publisher.PublisherId));
             _context.TypeBooks.Add(bookInfo);
             _context.SaveChanges();

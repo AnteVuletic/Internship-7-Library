@@ -28,8 +28,13 @@ namespace Intership_7_Library.Presentation.Subscription_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _subscriptionRepo.AddSubscription(catNameTextBox.Text, int.Parse(bookLimitTextBox.Text),
-                int.Parse(priceTextBox.Text));
+            if (!_subscriptionRepo.AddSubscription(catNameTextBox.Text, int.Parse(bookLimitTextBox.Text),
+                int.Parse(priceTextBox.Text)))
+            {
+                MessageBox.Show("Subscription category has been already added", "Subscription exists error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             NewForm();
         }
 

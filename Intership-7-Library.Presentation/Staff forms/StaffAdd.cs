@@ -43,8 +43,13 @@ namespace Intership_7_Library.Presentation.Staff_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _staffRepo.AddStaff(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
-                (StaffPosition) Enum.Parse(typeof(StaffPosition), comboPosition.Text));
+            if (_staffRepo.AddStaff(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
+                (StaffPosition) Enum.Parse(typeof(StaffPosition), comboPosition.Text)))
+            {
+                MessageBox.Show("There's person is already an staff member", "Staff member exists error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             NewForm();
         }
 

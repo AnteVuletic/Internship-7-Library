@@ -36,7 +36,14 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
             dateOfBirthPicker.Value =
                 new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day - 2);
             if (!_firstIteration) return;
-            foreach (var allSubscriptionType in _subscriptionRepo.GetAllSubscriptionTypes())
+            var allSubscriptionTypes = _subscriptionRepo.GetAllSubscriptionTypes();
+            if (allSubscriptionTypes.Count == 0)
+            {
+                MessageBox.Show("Please add an subscription model before adding an subscriber",
+                    "Subscription model not exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSave.Enabled = false;
+            }
+            foreach (var allSubscriptionType in allSubscriptionTypes)
             {
                 typeSubCombo.Items.Add(allSubscriptionType.Category);
             }
@@ -45,8 +52,14 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _subscriberRepo.AddSubscriber(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,DateTime.Today,
-                _subscriptionRepo.GetSubscriptionByCategory(typeSubCombo.Text));
+            if (!_subscriberRepo.AddSubscriber(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
+                DateTime.Today,
+                _subscriptionRepo.GetSubscriptionByCategory(typeSubCombo.Text)))
+            {
+                MessageBox.Show("This person is already an subscriber", "Subscriber exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             NewForm();
         }
 

@@ -25,7 +25,12 @@ namespace Intership_7_Library.Presentation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _authorRepo.AddAuthor(nameTextBox.Text, surnameTextBox.Text);
+            if (!_authorRepo.AddAuthor(nameTextBox.Text, surnameTextBox.Text))
+            {
+                MessageBox.Show("There is already an author with this name and surname.","Author exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             nameTextBox.Text = "";
             surnameTextBox.Text = "";
         }

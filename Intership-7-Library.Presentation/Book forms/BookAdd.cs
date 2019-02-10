@@ -42,17 +42,38 @@ namespace Intership_7_Library.Presentation.Book_forms
             numberTextBox.Text = "";
             copiesTextBox.Text = "";
             if (!_firstIteration) return;
-            foreach (var genre in _genreRepo.GetAllGenres())
+            var allGenres = _genreRepo.GetAllGenres();
+            var allPublishers = _publisherRepo.GetAllPublisher();
+            var allAuthors = _authorRepo.GetAllAuthors();
+            if (allGenres.Count == 0)
+            {
+                MessageBox.Show("There's no genres to choose from, make sure to add genres before adding book types.", "Genres not exist error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                btnSave.Enabled = false;
+            }
+            foreach (var genre in allGenres)
             {
                 genreCombo.Items.Add(genre.Name);
             }
 
-            foreach (var publisher in _publisherRepo.GetAllPublisher())
+            if (allPublishers.Count == 0)
+            {
+                MessageBox.Show("There's no publishers to choose from, make sure to add publishers before adding book types", "Publisher not exist error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                btnSave.Enabled = false;
+            }
+            foreach (var publisher in allPublishers)
             {
                 publisherCombo.Items.Add(publisher.Name);
             }
 
-            foreach (var author in _authorRepo.GetAllAuthors())
+            if (allAuthors.Count == 0)
+            {
+                MessageBox.Show("There's no authors to choose from, make sure to add authors before adding book types", "Author not exist error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                btnSave.Enabled = false;
+            }
+            foreach (var author in allAuthors)
             {
                 authorCombo.Items.Add(author.AuthorPerson.Name + " " + author.AuthorPerson.Surname);
             }
@@ -60,10 +81,15 @@ namespace Intership_7_Library.Presentation.Book_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _typeBookRepo.AddBooks(titleTextBox.Text, numberTextBox.Text,
+            if (!_typeBookRepo.AddBooks(titleTextBox.Text, numberTextBox.Text,
                 _genreRepo.GetGenreByText(genreCombo.Text),
                 _authorRepo.GetAuthorByName(authorCombo.Text),
-                _publisherRepo.GetPublisherByName(publisherCombo.Text), int.Parse(copiesTextBox.Text));
+                _publisherRepo.GetPublisherByName(publisherCombo.Text), int.Parse(copiesTextBox.Text)))
+            {
+                MessageBox.Show("There is already an book with this title from this publisher.", "Type of book exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             StartingPoint();
         }
 

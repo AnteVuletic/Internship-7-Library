@@ -37,7 +37,14 @@ namespace Intership_7_Library.Presentation.Member_forms
             institutionComboBox.SelectedIndex = -1;
             isProfessorCheckBox.Checked = false;
             if (!_firstIteration) return;
-            foreach (var institution in _institutionRepo.GetAllInstitutions())
+            var allInstitutions = _institutionRepo.GetAllInstitutions();
+            if (allInstitutions.Count == 0)
+            {
+                MessageBox.Show("Please add Institutions before adding students and professors.",
+                    "Institution not exists error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSave.Enabled = false;
+            }
+            foreach (var institution in allInstitutions)
             {
                 institutionComboBox.Items.Add(institution.Name);
             }
@@ -46,8 +53,14 @@ namespace Intership_7_Library.Presentation.Member_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _memberRepo.AddMember(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,isProfessorCheckBox.Checked,
-                _institutionRepo.GetInstitutionByName(institutionComboBox.Text));
+            if (!_memberRepo.AddMember(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
+                isProfessorCheckBox.Checked,
+                _institutionRepo.GetInstitutionByName(institutionComboBox.Text)))
+            {
+                MessageBox.Show("This person is already an member.", "Member exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             NewForm();
         }
 

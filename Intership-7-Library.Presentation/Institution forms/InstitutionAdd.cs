@@ -22,7 +22,12 @@ namespace Intership_7_Library.Presentation.Institution_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _institutionRepo.AddInstitution(nameTextBox.Text, addressTextBox.Text);
+            if (!_institutionRepo.AddInstitution(nameTextBox.Text, addressTextBox.Text))
+            {
+                MessageBox.Show("There's already an institution called like this", "Institution exists error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             nameTextBox.Text = "";
             addressTextBox.Text = "";
         }

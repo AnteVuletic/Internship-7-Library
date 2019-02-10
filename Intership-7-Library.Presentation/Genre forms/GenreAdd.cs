@@ -22,7 +22,12 @@ namespace Intership_7_Library.Presentation.Genre
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _genreRepo.AddGenre(genreTextBox.Text, descriptionTextBox.Text);
+            if (!_genreRepo.AddGenre(genreTextBox.Text, descriptionTextBox.Text))
+            {
+                MessageBox.Show("There's already an genre called like this", "Genre exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             genreTextBox.Text = "";
             descriptionTextBox.Text = "";
         }
