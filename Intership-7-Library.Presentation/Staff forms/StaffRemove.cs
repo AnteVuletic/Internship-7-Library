@@ -29,10 +29,13 @@ namespace Intership_7_Library.Presentation.Staff_forms
         {
             if (_staffRepo.GetAllStaff().Count == 0)
             {
+                MessageBox.Show("No staff have been added yet", "Staff not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
                 dateOfBirthPicker.Value = DateTime.Now;
                 comboPosition.Text = "";
+                btnDelete.Enabled = false;
             }
 
             if (_staffRepo.GetAllStaff().Count <= _index || _index < 0) return false;

@@ -27,8 +27,11 @@ namespace Intership_7_Library.Presentation.Institution_forms
         {
             if (_institutionRepo.GetAllInstitutions().Count == 0)
             {
+                MessageBox.Show("No institution has been added yet", "Institution not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 addressTextBox.Text = "";
+                btnDelete.Enabled = false;
             }
 
             if (_institutionRepo.GetAllInstitutions().Count <= _index || _index < 0) return false;
@@ -38,7 +41,14 @@ namespace Intership_7_Library.Presentation.Institution_forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _institutionRepo.RemoveInstitution(_institutionRepo.GetAllInstitutions()[_index].InstitutionId);
+            if (!_institutionRepo.RemoveInstitution(_institutionRepo.GetAllInstitutions()[_index].InstitutionId))
+            {
+                MessageBox.Show(
+                    "Institution cannot be deleted because it's being used to describe an student/professor",
+                    "Cascading delete not allowed error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             _index = 0;
             SetData();
         }

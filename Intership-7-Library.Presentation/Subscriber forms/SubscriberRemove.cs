@@ -30,11 +30,14 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
         {
             if (_subscriberRepo.GetAllSubscriber().Count == 0)
             {
+                MessageBox.Show("No subscriber has been added yet", "Subscriber not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
                 dateOfBirthPicker.Value = DateTime.Now;
                 typeSubCombo.Text = "";
                 dateOfRenewalPicker.Value = DateTime.Now;
+                btnDelete.Enabled = false;
             }
 
             if (_subscriberRepo.GetAllSubscriber().Count <= _index || _index < 0) return false;
@@ -47,7 +50,13 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _subscriberRepo.RemoveSubscriber(_subscriberRepo.GetAllSubscriber()[_index].SubscriberId);
+            if (!_subscriberRepo.RemoveSubscriber(_subscriberRepo.GetAllSubscriber()[_index].SubscriberId))
+            {
+                MessageBox.Show("Cannot remove subscriber who currently has an book rented", "Rent error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             _index = 0;
             SetData();
         }

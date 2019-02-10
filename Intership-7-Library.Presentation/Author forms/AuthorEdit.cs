@@ -31,9 +31,9 @@ namespace Intership_7_Library.Presentation.Author_forms
             {
                 MessageBox.Show("No authors have been added yet", "Authors not exists error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                btnSave.Enabled = false;
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
-                btnSave.Enabled = false;
             }
             if (_authorRepo.GetAllAuthors().Count <= _index || _index < 0) return false;
             nameTextBox.Text = _authorRepo.GetAllAuthors()[_index].AuthorPerson.Name;

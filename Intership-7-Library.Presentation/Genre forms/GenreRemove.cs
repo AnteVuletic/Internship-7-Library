@@ -27,6 +27,9 @@ namespace Intership_7_Library.Presentation.Genre_forms
         {
             if (_genreRepo.GetAllGenres().Count == 0)
             {
+                MessageBox.Show("No genre has been added yet", "Genre not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                btnDelete.Enabled = false;
                 genreTextBox.Text = "";
                 descriptionTextBox.Text = "";
             }
@@ -53,7 +56,13 @@ namespace Intership_7_Library.Presentation.Genre_forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _genreRepo.RemoveGenre(_genreRepo.GetAllGenres()[_index].GenreId);
+            if (!_genreRepo.RemoveGenre(_genreRepo.GetAllGenres()[_index].GenreId))
+            {
+                MessageBox.Show("Genre cannot be deleted because it's being used to describe an book",
+                    "Cascading delete not allowed error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             _index = 0;
             SetData();
         }

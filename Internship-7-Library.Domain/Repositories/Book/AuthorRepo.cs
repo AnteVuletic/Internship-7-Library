@@ -50,7 +50,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var authorFound = _context.Authors.Find(authorId);
             if (authorFound == null) return false;
-            if (_context.TypeBooks.FirstOrDefault(tybk => tybk.AuthorInfo.AuthorId == authorId) != null) return false;
+            if (_context.TypeBooks.Any(tybk => tybk.AuthorInfo.AuthorId == authorId)) return false;
             _context.Authors.Remove(_context.Authors.Find(authorId));
             _context.Persons.Remove(_context.Persons.First(prsn => prsn.PersonId == authorFound.AuthorPerson.PersonId));
             _context.SaveChanges();

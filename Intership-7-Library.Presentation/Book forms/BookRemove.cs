@@ -30,6 +30,9 @@ namespace Intership_7_Library.Presentation.Book_forms
         {
             if (_typeBook.GetAllBookTypes().Count == 0)
             {
+                MessageBox.Show("No books have been added yet", "Book not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                btnDelete.Enabled = false;
                 titleTextBox.Text = "";
                 numberTextBox.Text = "";
                 genreCombo.Text = "";

@@ -27,8 +27,11 @@ namespace Intership_7_Library.Presentation.Publisher_forms
         {
             if (_publisherRepo.GetAllPublisher().Count == 0)
             {
+                MessageBox.Show("No publishers have been added yet", "Publisher not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 countryTextBox.Text = "";
+                btnDelete.Enabled = false;
             }
 
             if (_publisherRepo.GetAllPublisher().Count <= _index || _index < 0) return false;
@@ -38,7 +41,12 @@ namespace Intership_7_Library.Presentation.Publisher_forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _publisherRepo.RemovePublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId);
+            if (!_publisherRepo.RemovePublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId))
+            {
+                MessageBox.Show("Cannot remove publisher which is being used to describe an book",
+                    "Cascading delete not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             _index = 0;
             SetData();
         }

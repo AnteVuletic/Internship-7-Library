@@ -29,10 +29,13 @@ namespace Intership_7_Library.Presentation.Member_forms
         {
             if (_memberRepo.GetAllMembers().Count == 0)
             {
+                MessageBox.Show("No student or professor has been added yet", "Member not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
                 dateOfBirthPicker.Value = DateTime.Now;
                 institutionComboBox.Text = "";
+                btnDelete.Enabled = false;
             }
 
             if (_memberRepo.GetAllMembers().Count <= _index || _index < 0) return false;
@@ -45,7 +48,12 @@ namespace Intership_7_Library.Presentation.Member_forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _memberRepo.RemoveMember(_memberRepo.GetAllMembers()[_index].MemberId);
+            if (!_memberRepo.RemoveMember(_memberRepo.GetAllMembers()[_index].MemberId))
+            {
+                MessageBox.Show("Cannot remove member that is currently renting an book", "Rent error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             _index = 0;
             SetData();
         }

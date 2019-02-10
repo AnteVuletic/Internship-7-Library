@@ -27,9 +27,12 @@ namespace Intership_7_Library.Presentation.Subscription_forms
         {
             if (_subscriptionRepo.GetAllSubscriptionTypes().Count == 0)
             {
+                MessageBox.Show("No subscription model has been added yet.", "Subscription model not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 catNameTextBox.Text = "";
                 bookLimitTextBox.Text = "";
                 priceTextBox.Text = "";
+                btnDelete.Enabled = false;
             }
 
             if (_subscriptionRepo.GetAllSubscriptionTypes().Count <= _index || _index < 0) return false;
@@ -40,7 +43,14 @@ namespace Intership_7_Library.Presentation.Subscription_forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _subscriptionRepo.RemoveSubscription(_subscriptionRepo.GetAllSubscriptionTypes()[_index].SubscriptionId);
+            if (!_subscriptionRepo.RemoveSubscription(
+                _subscriptionRepo.GetAllSubscriptionTypes()[_index].SubscriptionId))
+            {
+                MessageBox.Show("Cannot remove an subscription model which is being used to describe an subscriber",
+                    "Cascading delete not allowed error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             _index = 0;
             SetData();
         }

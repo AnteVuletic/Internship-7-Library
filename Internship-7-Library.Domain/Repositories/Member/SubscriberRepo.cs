@@ -49,6 +49,8 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var subscriberFound = GetSubscriber(subscriberId);
             if (subscriberFound == null) return false;
+            if (_context.Rents.Any(rnt =>
+                rnt.Person.PersonId == subscriberFound.Person.PersonId && !rnt.ReturnDate.HasValue)) return false;
             _context.Remove(subscriberFound);
             _context.Persons.Remove(
                 _context.Persons.FirstOrDefault(prsn => prsn.PersonId == subscriberFound.Person.PersonId));

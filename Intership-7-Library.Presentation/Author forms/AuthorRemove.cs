@@ -29,6 +29,9 @@ namespace Intership_7_Library.Presentation.Author_forms
         {
             if (_authorRepo.GetAllAuthors().Count == 0)
             {
+                MessageBox.Show("No authors have been added yet", "Authors not exists error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                btnDelete.Enabled = false;
                 nameTextBox.Text = "";
                 surnameTextBox.Text = "";
             }
@@ -39,7 +42,12 @@ namespace Intership_7_Library.Presentation.Author_forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _authorRepo.RemoveAuthor(_authorRepo.GetAllAuthors()[_index].AuthorId);
+            if (!_authorRepo.RemoveAuthor(_authorRepo.GetAllAuthors()[_index].AuthorId))
+            {
+                MessageBox.Show("Author cannot be removed because it's info is being used to describe an book.", "Cascading delete not allowed error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
             _index = 0;
             SetData();
         }

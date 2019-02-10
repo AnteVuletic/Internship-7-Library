@@ -43,6 +43,8 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var memberFound = GetMember(memberId);
             if (memberFound == null) return false;
+            if (_context.Rents.Any(
+                rnt => rnt.Person.PersonId == memberFound.Person.PersonId && !rnt.ReturnDate.HasValue)) return false;
             _context.Members.Remove(memberFound);
             _context.Persons.Remove(_context.Persons.Find(memberFound.Person.PersonId));
             _context.SaveChanges();
