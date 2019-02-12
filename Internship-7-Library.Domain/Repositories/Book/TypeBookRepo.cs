@@ -41,7 +41,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
             var bookInfo = new TypeBook(title, numPages, _context.Genres.Find(genre.GenreId), _context.Authors.Find(author.AuthorId), _context.Publishers.Find(publisher.PublisherId));
             _context.TypeBooks.Add(bookInfo);
             _context.SaveChanges();
-            for (var copy = 0; copy <= numberOfCopies; copy++)
+            for (var copy = 0; copy < numberOfCopies; copy++)
             {
                 _bookRepo.AddBook(bookInfo);
             }
@@ -72,8 +72,12 @@ namespace Internship_7_Library.Domain.Repositories.Book
                 {
                     for (var i = 0; i < difference; i++)
                     {
-                        _context.Books.Remove(_context.Books.FirstOrDefault(bk =>
-                            bk.BookInfo.TypeBookId == bookFound.TypeBookId));
+                        var copyOfBook = _context.Books.FirstOrDefault(bk =>
+                            bk.BookInfo.TypeBookId == bookFound.TypeBookId && bk.State == BookState.Available);
+                        if (copyOfBook == null)
+                            return -4;
+                        _context.Books.Remove(copyOfBook);
+                        _context.SaveChanges();
                     }
                 }
 
@@ -84,6 +88,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
                     {
                         _context.Books.Add(
                             new Data.Entities.Models.Book(_context.TypeBooks.Find(bookFound.TypeBookId)));
+                        _context.SaveChanges();
                     }
                 }
             }

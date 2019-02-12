@@ -95,6 +95,13 @@ namespace Intership_7_Library.Presentation.Book_forms
                     MessageBox.Show("Number of copies cannot be negative", "Book copies negative error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                case -4:
+                    MessageBox.Show("There's no available copies to remove they're rented or in an different state.",
+                        "Book unavailable to remove error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    copiesTextBox.Text = _typeBook.GetAllBookTypes()[_index].PhysicalBooks
+                        .Count(bk => bk.BookInfo.TypeBookId == _typeBook.GetAllBookTypes()[_index].TypeBookId).ToString();
+                    return;
                 default:
                     SetData();
                     return;
