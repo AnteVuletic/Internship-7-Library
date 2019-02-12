@@ -53,6 +53,12 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             TextBoxParser.TextBoxChecker(Controls);
+            if (typeSubCombo.Text == "")
+            {
+                MessageBox.Show("Please choose an subscription model before pressing save.", "Subscription model empty",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (!_subscriberRepo.AddSubscriber(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
                 DateTime.Today,
                 _subscriptionRepo.GetSubscriptionByCategory(typeSubCombo.Text)))

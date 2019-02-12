@@ -44,6 +44,12 @@ namespace Intership_7_Library.Presentation.Staff_forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             TextBoxParser.TextBoxChecker(Controls);
+            if (comboPosition.Text == "")
+            {
+                MessageBox.Show("Please choose an position for this person before clicking save",
+                    "Position empty error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (_staffRepo.AddStaff(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
                 (StaffPosition) Enum.Parse(typeof(StaffPosition), comboPosition.Text)))
             {

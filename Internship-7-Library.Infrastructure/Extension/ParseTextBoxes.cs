@@ -18,6 +18,7 @@ namespace Internship_7_Library.Infrastructure.Extension
                     return stringPassed[0].ToString().ToUpper();
                 default:
                     stringPassed = stringPassed.Trim();
+                    stringPassed = stringPassed.ToLower();
                     stringPassed = stringPassed[0].ToString().ToUpper() + string.Join("", stringPassed.Skip(1));
                     return stringPassed;
             }

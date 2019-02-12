@@ -54,6 +54,12 @@ namespace Intership_7_Library.Presentation.Member_forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             TextBoxParser.TextBoxChecker(Controls);
+            if (institutionComboBox.Text == "")
+            {
+                MessageBox.Show("Please pick an institution before trying to save", "Institution empty error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (!_memberRepo.AddMember(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
                 isProfessorCheckBox.Checked,
                 _institutionRepo.GetInstitutionByName(institutionComboBox.Text)))
