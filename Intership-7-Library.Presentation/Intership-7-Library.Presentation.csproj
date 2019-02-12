@@ -240,6 +240,7 @@
     <Compile Include="Subscription forms\SubscriptionRemove.Designer.cs">
       <DependentUpon>SubscriptionRemove.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxParser.cs" />
     <EmbeddedResource Include="Author forms\AuthorEdit.resx">
       <DependentUpon>AuthorEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -366,6 +367,10 @@
     <ProjectReference Include="..\Internship-7-Library.Domain\Internship-7-Library.Domain.csproj">
       <Project>{2af2cb09-9d5c-4043-a472-3651b2e8fadb}</Project>
       <Name>Internship-7-Library.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Internship-7-Library.Infrastructure\Internship-7-Library.Infrastructure.csproj">
+      <Project>{94c72a9c-1b66-4fe5-9805-bd8c1373db3e}</Project>
+      <Name>Internship-7-Library.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

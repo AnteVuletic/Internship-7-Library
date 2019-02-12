@@ -52,6 +52,7 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_subscriberRepo.AddSubscriber(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
                 DateTime.Today,
                 _subscriptionRepo.GetSubscriptionByCategory(typeSubCombo.Text)))

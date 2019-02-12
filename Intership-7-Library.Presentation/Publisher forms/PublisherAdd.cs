@@ -22,6 +22,7 @@ namespace Intership_7_Library.Presentation.Publisher__forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_publisherRepo.AddPublisher(nameTextBox.Text, countryTextBox.Text))
             {
                 MessageBox.Show("There's already an publisher with this name.", "Publisher exists error",

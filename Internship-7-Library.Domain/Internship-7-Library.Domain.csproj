@@ -128,6 +128,10 @@
       <Project>{d52c4c5f-d07a-4511-a403-aa042e0663d9}</Project>
       <Name>Internship-7-Library.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Internship-7-Library.Infrastructure\Internship-7-Library.Infrastructure.csproj">
+      <Project>{94c72a9c-1b66-4fe5-9805-bd8c1373db3e}</Project>
+      <Name>Internship-7-Library.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

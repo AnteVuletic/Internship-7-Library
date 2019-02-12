@@ -81,6 +81,7 @@ namespace Intership_7_Library.Presentation.Book_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_typeBookRepo.AddBooks(titleTextBox.Text, numberTextBox.Text,
                 _genreRepo.GetGenreByText(genreCombo.Text),
                 _authorRepo.GetAuthorByName(authorCombo.Text),

@@ -28,6 +28,7 @@ namespace Intership_7_Library.Presentation.Subscription_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_subscriptionRepo.AddSubscription(catNameTextBox.Text, int.Parse(bookLimitTextBox.Text),
                 int.Parse(priceTextBox.Text)))
             {

@@ -79,6 +79,7 @@ namespace Intership_7_Library.Presentation.Book_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             var returnValue = _typeBook.EditBook(_typeBook.GetAllBookTypes()[_index].TypeBookId, titleTextBox.Text,
                 numberTextBox.Text,
                 _genreRepo.GetGenreByText(genreCombo.Text),

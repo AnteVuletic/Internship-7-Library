@@ -62,10 +62,5 @@ namespace Internship_7_Library.Domain.Repositories
             _context.SaveChanges();
             return true;
         }
-
-        public bool EditPerson(int personId, string name, string surname, DateTime dateOfBirth)
-        {
-            return RemovePerson(personId) && AddPerson(name, surname, dateOfBirth);
-        }
     }
 }

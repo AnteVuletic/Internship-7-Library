@@ -42,6 +42,7 @@ namespace Intership_7_Library.Presentation.Institution_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_institutionRepo.EditInstitution(_institutionRepo.GetAllInstitutions()[_index].InstitutionId,
                 nameTextBox.Text, addressTextBox.Text))
             {

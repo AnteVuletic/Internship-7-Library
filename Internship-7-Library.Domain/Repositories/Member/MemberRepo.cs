@@ -56,9 +56,9 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var memberFound = GetMember(memberId);
             if (memberFound == null) return false;
-            if (_context.Members.Any(memb =>
+            if (_context.Members.Count(memb =>
                 memb.Person.Name == name && memb.Person.Surname == surname &&
-                memb.Person.DateOfBirth.Value == dateOfBirth)) return false;
+                memb.Person.DateOfBirth.Value == dateOfBirth) > 1) return false;
             memberFound.Person.Name = name;
             memberFound.Person.Surname = surname;
             memberFound.Person.DateOfBirth = dateOfBirth;

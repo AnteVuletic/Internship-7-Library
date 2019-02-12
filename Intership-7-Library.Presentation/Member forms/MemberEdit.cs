@@ -62,6 +62,7 @@ namespace Intership_7_Library.Presentation.Member_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_memberRepo.EditMember(_memberRepo.GetAllMembers()[_index].MemberId, nameTextBox.Text,
                 surnameTextBox.Text,
                 dateOfBirthPicker.Value, isProfessorCheckBox.Checked,

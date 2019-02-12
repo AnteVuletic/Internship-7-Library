@@ -40,6 +40,7 @@ namespace Intership_7_Library.Presentation.Publisher_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_publisherRepo.EditPublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId, nameTextBox.Text,
                 countryTextBox.Text))
             {

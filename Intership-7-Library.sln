@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-7-Library.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-7-Library.Data", "Internship-7-Library.Data\Internship-7-Library.Data.csproj", "{D52C4C5F-D07A-4511-A403-AA042E0663D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-7-Library.Infrastructure", "Internship-7-Library.Infrastructure\Internship-7-Library.Infrastructure.csproj", "{94C72A9C-1B66-4FE5-9805-BD8C1373DB3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D52C4C5F-D07A-4511-A403-AA042E0663D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D52C4C5F-D07A-4511-A403-AA042E0663D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D52C4C5F-D07A-4511-A403-AA042E0663D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C72A9C-1B66-4FE5-9805-BD8C1373DB3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C72A9C-1B66-4FE5-9805-BD8C1373DB3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C72A9C-1B66-4FE5-9805-BD8C1373DB3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C72A9C-1B66-4FE5-9805-BD8C1373DB3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

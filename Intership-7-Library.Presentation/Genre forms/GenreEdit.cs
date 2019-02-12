@@ -41,6 +41,7 @@ namespace Intership_7_Library.Presentation.Genre_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_genreRepo.EditGenre(_genreRepo.GetAllGenres()[_index].GenreId, genreTextBox.Text,
                 descriptionTextBox.Text))
             {

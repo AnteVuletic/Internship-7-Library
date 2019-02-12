@@ -42,6 +42,7 @@ namespace Intership_7_Library.Presentation.Author_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            TextBoxParser.TextBoxChecker(Controls);
             if (!_authorRepo.EditAuthor(_authorRepo.GetAllAuthors()[_index].AuthorId, nameTextBox.Text,
                 surnameTextBox.Text))
             {

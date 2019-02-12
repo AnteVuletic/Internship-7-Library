@@ -54,7 +54,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var subFound = GetSubscription(subscriptionId);
             if (subFound == null) return false;
-            if (_context.Subscriptions.Any(sub => sub.Category == category)) return false;
+            if (_context.Subscriptions.Count(sub => sub.Category == category) > 1) return false;
             subFound.Category = category;
             subFound.BookLimitAtOnce = bookLimitAtOnce;
             subFound.PricePerMonth = pricePerMonth;
