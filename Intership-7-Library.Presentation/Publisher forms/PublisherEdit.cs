@@ -40,6 +40,12 @@ namespace Intership_7_Library.Presentation.Publisher_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (EmptyChecker.TryTextFieldsEmpty(Controls))
+            {
+                MessageBox.Show("Please make sure you enter a value for all text fields", "Value empty error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             TextBoxParser.TextBoxChecker(Controls);
             if (!_publisherRepo.EditPublisher(_publisherRepo.GetAllPublisher()[_index].PublisherId, nameTextBox.Text,
                 countryTextBox.Text))

@@ -79,6 +79,12 @@ namespace Intership_7_Library.Presentation.Book_forms
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (EmptyChecker.TryTextFieldsEmpty(Controls))
+            {
+                MessageBox.Show("Please make sure you enter a value for all text fields", "Value empty error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             TextBoxParser.TextBoxChecker(Controls);
             var returnValue = _typeBook.EditBook(_typeBook.GetAllBookTypes()[_index].TypeBookId, titleTextBox.Text,
                 numberTextBox.Text,
@@ -124,6 +130,16 @@ namespace Intership_7_Library.Presentation.Book_forms
         {
             _index++;
             if (!SetData()) _index--;
+        }
+
+        private void numberTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); ;
+        }
+
+        private void copiesTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); ;
         }
     }
 }

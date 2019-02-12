@@ -1,4 +1,6 @@
-﻿namespace Intership_7_Library.Presentation.Book_forms
+﻿using System.Windows.Forms;
+
+namespace Intership_7_Library.Presentation.Book_forms
 {
     partial class BookAdd
     {
@@ -144,6 +146,7 @@
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.Size = new System.Drawing.Size(189, 29);
             this.numberTextBox.TabIndex = 17;
+            this.numberTextBox.KeyPress += new KeyPressEventHandler(this.numberTextBox_KeyPress);
             // 
             // genreCombo
             // 
@@ -192,6 +195,7 @@
             this.copiesTextBox.Name = "copiesTextBox";
             this.copiesTextBox.Size = new System.Drawing.Size(189, 29);
             this.copiesTextBox.TabIndex = 22;
+            this.copiesTextBox.KeyPress += new KeyPressEventHandler(this.copiesTextBox_KeyPress);
             // 
             // BookAdd
             // 

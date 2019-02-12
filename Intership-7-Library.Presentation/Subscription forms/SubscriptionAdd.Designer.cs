@@ -1,4 +1,6 @@
-﻿namespace Intership_7_Library.Presentation.Subscription_forms
+﻿using System.Windows.Forms;
+
+namespace Intership_7_Library.Presentation.Subscription_forms
 {
     partial class SubscriptionAdd
     {
@@ -118,6 +120,7 @@
             this.bookLimitTextBox.Name = "bookLimitTextBox";
             this.bookLimitTextBox.Size = new System.Drawing.Size(202, 29);
             this.bookLimitTextBox.TabIndex = 19;
+            this.bookLimitTextBox.KeyPress += new KeyPressEventHandler(this.bookLimitTextBox_KeyPress);
             // 
             // priceTextBox
             // 
@@ -126,6 +129,7 @@
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(202, 29);
             this.priceTextBox.TabIndex = 20;
+            this.priceTextBox.KeyPress += new KeyPressEventHandler(this.priceTextBox_KeyPress);
             // 
             // SubscriptionAdd
             // 

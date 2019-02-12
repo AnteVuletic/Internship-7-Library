@@ -41,6 +41,13 @@ namespace Intership_7_Library.Presentation.Genre_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (descriptionTextBox.Text == "") descriptionTextBox.Text = "-";
+            if (EmptyChecker.TryTextFieldsEmpty(Controls))
+            {
+                MessageBox.Show("Please make sure you enter a value for all text fields", "Value empty error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             TextBoxParser.TextBoxChecker(Controls);
             if (!_genreRepo.EditGenre(_genreRepo.GetAllGenres()[_index].GenreId, genreTextBox.Text,
                 descriptionTextBox.Text))

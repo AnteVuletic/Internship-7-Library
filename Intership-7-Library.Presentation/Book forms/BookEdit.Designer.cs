@@ -1,4 +1,6 @@
-﻿namespace Intership_7_Library.Presentation.Book_forms
+﻿using System.Windows.Forms;
+
+namespace Intership_7_Library.Presentation.Book_forms
 {
     partial class BookEdit
     {
@@ -54,6 +56,7 @@
             this.copiesTextBox.Name = "copiesTextBox";
             this.copiesTextBox.Size = new System.Drawing.Size(189, 29);
             this.copiesTextBox.TabIndex = 35;
+            this.copiesTextBox.KeyPress += new KeyPressEventHandler(this.copiesTextBox_KeyPress);
             // 
             // label7
             // 
@@ -102,6 +105,7 @@
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.Size = new System.Drawing.Size(189, 29);
             this.numberTextBox.TabIndex = 30;
+            this.numberTextBox.KeyPress += new KeyPressEventHandler(this.numberTextBox_KeyPress);
             // 
             // titleTextBox
             // 

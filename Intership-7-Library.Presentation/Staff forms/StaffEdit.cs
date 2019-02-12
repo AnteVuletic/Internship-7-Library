@@ -58,6 +58,12 @@ namespace Intership_7_Library.Presentation.Staff_forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (EmptyChecker.TryTextFieldsEmpty(Controls))
+            {
+                MessageBox.Show("Please make sure you enter a value for all text fields", "Value empty error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             TextBoxParser.TextBoxChecker(Controls);
             if (!_staffRepo.EditStaff(_staffRepo.GetAllStaff()[_index].StaffId, nameTextBox.Text, surnameTextBox.Text,
                 dateOfBirthPicker.Value, (StaffPosition) Enum.Parse(typeof(StaffPosition), comboPosition.Text)))

@@ -53,7 +53,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var genreFound = GetGenre(genreId);
             if (genreFound == null) return false;
-            if (_context.Genres.Any(gnr => gnr.Name == genreName)) return false;
+            if (_context.Genres.Count(gnr => gnr.Name == genreName) > 1) return false;
             genreFound.Name = genreName;
             genreFound.Description = description;
             return true;
