@@ -56,6 +56,7 @@ namespace Intership_7_Library.Presentation.Rent_forms
                 if(_rentRepo.GetAllCurrentlyRented().Any(bk=> bk.PersonId == person.PersonId))
                     listOfMembers.Items.Add($"{person.Name} {person.Surname} {person.DateOfBirth.Value.ToString("dd/MM/yyyy")}");
             }
+            btnReturn.Enabled = listOfMembers.Items.Count != 0;
         }
 
         private void AdjustBookList()
@@ -76,6 +77,13 @@ namespace Intership_7_Library.Presentation.Rent_forms
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {
+
+            if (bookListView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please choose an book you wish to rent.", "Book not selected error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var parseStringBeforeSpace = new Regex(@"[^\s]+");
             var stringTitleMatch = parseStringBeforeSpace.Match(bookListView.SelectedItems[0].Text);
             var bookInQuestion = _bookRepo.GetBooks().FirstOrDefault(bk => bk.BookInfo.Title == stringTitleMatch.Value

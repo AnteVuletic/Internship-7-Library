@@ -45,7 +45,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
             if (subFound == null) return false;
             if (_context.Subscribers.Any(sub =>
                     sub.TypeSubscription.SubscriptionId == subFound.SubscriptionId)) return false;
-            _context.Subscriptions.Remove(_context.Subscriptions.FirstOrDefault(sub => subFound.Category == subFound.Category));
+            _context.Subscriptions.Remove(_context.Subscriptions.Find(subFound.SubscriptionId));
             _context.SaveChanges();
             return true;
         }
@@ -54,7 +54,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var subFound = GetSubscription(subscriptionId);
             if (subFound == null) return false;
-            if (_context.Subscriptions.Count(sub => sub.Category == category) > 1) return false;
+            if (_context.Subscriptions.Count(sub => sub.Category == category) >= 1) return false;
             subFound.Category = category;
             subFound.BookLimitAtOnce = bookLimitAtOnce;
             subFound.PricePerMonth = pricePerMonth;

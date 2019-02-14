@@ -32,7 +32,7 @@ namespace Intership_7_Library.Presentation.Genre
             TextBoxParser.TextBoxChecker(Controls);
             if (!_genreRepo.AddGenre(genreTextBox.Text, descriptionTextBox.Text))
             {
-                MessageBox.Show("There's already an genre called like this", "Genre exists error", MessageBoxButtons.OK,
+                MessageBox.Show("There's already a genre called like this", "Genre exists error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
             }

@@ -56,10 +56,10 @@ namespace Intership_7_Library.Presentation.Staff_forms
                     "Position empty error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (_staffRepo.AddStaff(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
+            if (!_staffRepo.AddStaff(nameTextBox.Text, surnameTextBox.Text, dateOfBirthPicker.Value,
                 (StaffPosition) Enum.Parse(typeof(StaffPosition), comboPosition.Text)))
             {
-                MessageBox.Show("There's person is already an staff member", "Staff member exists error",
+                MessageBox.Show("There's person is already a staff member", "Staff member exists error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

@@ -51,7 +51,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         public bool EditPublisher(int publisherId, string publisherName, string publisherCountry)
         {
             var publisherFound = GetPublisher(publisherId);
-            if (_context.Publishers.Count(publish => publish.Name == publisherName) > 1) return false;
+            if (_context.Publishers.Count(publish => publish.Name == publisherName) >= 1) return false;
             if (publisherFound == null) return false;
             publisherFound.Name = publisherName;
             publisherFound.Country = publisherCountry;

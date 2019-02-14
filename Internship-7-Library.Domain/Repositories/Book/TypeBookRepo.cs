@@ -64,7 +64,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
             var bookFound = GetBookType(typeBookId);
             var copiesOfBook = _context.Books.Count(bk => bk.BookInfo.TypeBookId == bookFound.TypeBookId);
             if (numberOfCopies < 0) return -2;
-            if (_context.TypeBooks.Count(typbk => typbk.Title == title && typbk.Publisher.Name == publisher.Name) > 1) return -1;
+            if (_context.TypeBooks.Count(typbk => typbk.Title == title && typbk.Publisher.Name == publisher.Name) >= 1) return -1;
             if (copiesOfBook != numberOfCopies)
             {
                 var difference = copiesOfBook - numberOfCopies;

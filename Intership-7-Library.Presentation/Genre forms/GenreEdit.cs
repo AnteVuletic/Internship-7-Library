@@ -54,7 +54,6 @@ namespace Intership_7_Library.Presentation.Genre_forms
             {
                 MessageBox.Show("Genre with this name already exists", "Genre exists error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                return;
             }
             SetData();
         }

@@ -54,8 +54,8 @@ namespace Internship_7_Library.Domain.Repositories
             var staffFound = GetStaff(staffId);
             if (staffFound == null) return false;
             if (_context.Staff.Count(stff =>
-                stff.Person.Name == name && stff.Person.Surname == stff.Person.Surname &&
-                stff.Person.DateOfBirth.Value == dateOfBirth) > 1) return false;
+                stff.Person.Name == name && stff.Person.Surname == surname &&
+                stff.Person.DateOfBirth.Value == dateOfBirth) >= 1) return false;
             staffFound.Person.Name = name;
             staffFound.Person.Surname = surname;
             staffFound.Person.DateOfBirth = dateOfBirth;

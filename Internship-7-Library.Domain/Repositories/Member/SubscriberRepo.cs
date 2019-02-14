@@ -53,7 +53,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
                 rnt.Person.PersonId == subscriberFound.Person.PersonId && !rnt.ReturnDate.HasValue)) return false;
             _context.Remove(subscriberFound);
             _context.Persons.Remove(
-                _context.Persons.FirstOrDefault(prsn => prsn.PersonId == subscriberFound.Person.PersonId));
+                _context.Persons.First(prsn => prsn.PersonId == subscriberFound.Person.PersonId));
             _context.SaveChanges();
             return true;
         }
@@ -64,7 +64,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
             if (subscriberFound == null) return false;
             if (_context.Subscribers.Count(sub =>
                 sub.Person.Name == name && sub.Person.Surname == surname &&
-                sub.Person.DateOfBirth.Value == dateOfBirth) > 1) return false;
+                sub.Person.DateOfBirth.Value == dateOfBirth) >= 1) return false;
             subscriberFound.Person.Name = name;
             subscriberFound.Person.Surname = surname;
             subscriberFound.Person.DateOfBirth = dateOfBirth;

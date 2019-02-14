@@ -37,6 +37,8 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
                                         $" \n Model: {subscriber.TypeSubscription.Category}" +
                                         $" \n Last renewal: {subscriber.DateOfRenewal.ToString("dd/MM/yyyy")}");
             }
+
+            btnExtend.Enabled = listOfMembers.Items.Count != 0;
         }
         private void memberSearchTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -58,6 +60,12 @@ namespace Intership_7_Library.Presentation.Subscriber_forms
 
         private void btnExtend_Click(object sender, EventArgs e)
         {
+            if (_personMatches == null)
+            {
+                MessageBox.Show("Please choose an subscriber before trying to extend", "No choice picked error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var subscriberPicked = _subscriberRepo.GetSubscriberByNameSurnameBirth(_personMatches[0].Value,
                 _personMatches[1].Value, _personDateOfBirth);
             _subscriberRepo.ExtendSubscriptionByMonth(subscriberPicked.SubscriberId);
