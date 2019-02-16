@@ -34,7 +34,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public List<Author> GetAllAuthors()
         {
-            return _context.Authors.Include(ath => ath.AuthorPerson).ToList();
+            return _context.Authors.Include(ath => ath.AuthorPerson).Include(ath => ath.BookInfos).ToList();
         }
 
         public bool AddAuthor(string name, string surname)
@@ -62,7 +62,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         {
             var authorFound = GetAuthor(authorId);
             if (authorFound == null) return false;
-            if (_context.Authors.Count(auth => auth.AuthorPerson.Name == name && auth.AuthorPerson.Surname == surname) >= 1)
+            if (_context.Authors.Count(auth => auth.AuthorPerson.Name == name && auth.AuthorPerson.Surname == surname && auth.AuthorId != authorId) >= 1)
                 return false;
             authorFound.AuthorPerson.Name = name;
             authorFound.AuthorPerson.Surname = surname;

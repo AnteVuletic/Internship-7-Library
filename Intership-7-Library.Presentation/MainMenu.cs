@@ -19,6 +19,7 @@ using Intership_7_Library.Presentation.Member_forms;
 using Intership_7_Library.Presentation.Publisher_forms;
 using Intership_7_Library.Presentation.Publisher__forms;
 using Intership_7_Library.Presentation.Rent_forms;
+using Intership_7_Library.Presentation.Reports;
 using Intership_7_Library.Presentation.Staff_forms;
 using Intership_7_Library.Presentation.Subscriber_forms;
 using Intership_7_Library.Presentation.Subscription_forms;
@@ -268,6 +269,30 @@ namespace Intership_7_Library.Presentation
         {
             var subFrm = new SubscriberExtendByMonth();
             Nav(subFrm,contentPanel);
+        }
+
+        private void bookDetailsBtn_Click(object sender, EventArgs e)
+        {
+            var rptBook = new BookDetails();
+            Nav(rptBook,contentPanel);
+        }
+
+        private void booksByAuthorBtn_Click(object sender, EventArgs e)
+        {
+            var rptBookByAuth = new BookByAuthor();
+            Nav(rptBookByAuth,contentPanel);
+        }
+
+        private void bookByPublisherBtn_Click(object sender, EventArgs e)
+        {
+            var rptBookByPublisher = new BookByPublisher();
+            Nav(rptBookByPublisher, contentPanel);
+        }
+
+        private void rentedBooksByRenter_Click(object sender, EventArgs e)
+        {
+            var rptRenters = new BookByRenters();
+            Nav(rptRenters,contentPanel);
         }
     }
 }

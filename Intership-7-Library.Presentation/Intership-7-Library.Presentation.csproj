@@ -181,6 +181,30 @@
     <Compile Include="Rent forms\RentReturn.Designer.cs">
       <DependentUpon>RentReturn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\BookByAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\BookByAuthor.Designer.cs">
+      <DependentUpon>BookByAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BookByPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\BookByPublisher.Designer.cs">
+      <DependentUpon>BookByPublisher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BookByRenters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\BookByRenters.Designer.cs">
+      <DependentUpon>BookByRenters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BookDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\BookDetails.Designer.cs">
+      <DependentUpon>BookDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Staff forms\StaffAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +340,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rent forms\RentReturn.resx">
       <DependentUpon>RentReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BookByAuthor.resx">
+      <DependentUpon>BookByAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BookByPublisher.resx">
+      <DependentUpon>BookByPublisher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BookByRenters.resx">
+      <DependentUpon>BookByRenters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BookDetails.resx">
+      <DependentUpon>BookDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff forms\StaffAdd.resx">
       <DependentUpon>StaffAdd.cs</DependentUpon>

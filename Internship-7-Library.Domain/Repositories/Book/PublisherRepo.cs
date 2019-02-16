@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories.Book
 {
@@ -27,7 +28,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         }
         public List<Publisher> GetAllPublisher()
         {
-            return _context.Publishers.ToList();
+            return _context.Publishers.Include(pub => pub.BookInfos).ToList();
         }
 
         public bool AddPublisher(string publisherName, string publisherCountry)
@@ -51,7 +52,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
         public bool EditPublisher(int publisherId, string publisherName, string publisherCountry)
         {
             var publisherFound = GetPublisher(publisherId);
-            if (_context.Publishers.Count(publish => publish.Name == publisherName) >= 1) return false;
+            if (_context.Publishers.Count(publish => publish.Name == publisherName && publish.PublisherId != publisherId) >= 1) return false;
             if (publisherFound == null) return false;
             publisherFound.Name = publisherName;
             publisherFound.Country = publisherCountry;

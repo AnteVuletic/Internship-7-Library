@@ -53,7 +53,7 @@ namespace Internship_7_Library.Domain.Repositories.Member
         {
             var institutionFound = GetInstitution(institutionId);
             if (institutionFound == null) return false;
-            if (_context.Institutions.Count(inst => inst.Name == name) >= 1) return false;
+            if (_context.Institutions.Count(inst => inst.Name == name && inst.InstitutionId != institutionId) >= 1) return false;
             institutionFound.Name = name;
             institutionFound.Address = address;
             _context.SaveChanges();

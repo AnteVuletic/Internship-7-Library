@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Internship_7_Library.Data.Entities;
 using Internship_7_Library.Data.Entities.Models;
 using Internship_7_Library.Data.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internship_7_Library.Domain.Repositories
 {
@@ -20,7 +21,7 @@ namespace Internship_7_Library.Domain.Repositories
 
         public List<Rent> GetAllCurrentlyRented()
         {
-            return _context.Rents.Where(rnt => rnt.ReturnDate == null).ToList();
+            return _context.Rents.Include(rnt => rnt.Person).ThenInclude(prsn => prsn.Subscribers).ThenInclude(sub => sub.TypeSubscription).Include(rnt => rnt.Person).ThenInclude(prsn => prsn.InstitutionMembers).ThenInclude(instMember => instMember.Institution).Include(rnt => rnt.Book).ThenInclude(bk => bk.BookInfo).Where(rnt => rnt.ReturnDate == null).ToList();
         }
 
         public bool RentBook(Data.Entities.Models.Book book, Person person)

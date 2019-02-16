@@ -67,6 +67,10 @@
             this.returnBookbtn = new System.Windows.Forms.Button();
             this.expiredBtn = new System.Windows.Forms.Button();
             this.btnExtend = new System.Windows.Forms.Button();
+            this.bookDetailsBtn = new System.Windows.Forms.Button();
+            this.booksByAuthorBtn = new System.Windows.Forms.Button();
+            this.bookByPublisherBtn = new System.Windows.Forms.Button();
+            this.rentedBooksByRenter = new System.Windows.Forms.Button();
             this.bookMngDrpDwn.SuspendLayout();
             this.staffMngDrpDwn.SuspendLayout();
             this.memberMngDrpDwn.SuspendLayout();
@@ -600,6 +604,10 @@
             this.navbarFlowPanel.Controls.Add(this.returnBookbtn);
             this.navbarFlowPanel.Controls.Add(this.expiredBtn);
             this.navbarFlowPanel.Controls.Add(this.btnExtend);
+            this.navbarFlowPanel.Controls.Add(this.bookDetailsBtn);
+            this.navbarFlowPanel.Controls.Add(this.booksByAuthorBtn);
+            this.navbarFlowPanel.Controls.Add(this.bookByPublisherBtn);
+            this.navbarFlowPanel.Controls.Add(this.rentedBooksByRenter);
             this.navbarFlowPanel.Location = new System.Drawing.Point(2, 1);
             this.navbarFlowPanel.Name = "navbarFlowPanel";
             this.navbarFlowPanel.Size = new System.Drawing.Size(219, 630);
@@ -656,6 +664,58 @@
             this.btnExtend.Text = "Extend subscription by month";
             this.btnExtend.UseVisualStyleBackColor = false;
             this.btnExtend.Click += new System.EventHandler(this.btnExtend_Click);
+            // 
+            // bookDetailsBtn
+            // 
+            this.bookDetailsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.bookDetailsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bookDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bookDetailsBtn.Location = new System.Drawing.Point(3, 324);
+            this.bookDetailsBtn.Name = "bookDetailsBtn";
+            this.bookDetailsBtn.Size = new System.Drawing.Size(187, 33);
+            this.bookDetailsBtn.TabIndex = 19;
+            this.bookDetailsBtn.Text = "Book details";
+            this.bookDetailsBtn.UseVisualStyleBackColor = false;
+            this.bookDetailsBtn.Click += new System.EventHandler(this.bookDetailsBtn_Click);
+            // 
+            // booksByAuthorBtn
+            // 
+            this.booksByAuthorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.booksByAuthorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.booksByAuthorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.booksByAuthorBtn.Location = new System.Drawing.Point(3, 363);
+            this.booksByAuthorBtn.Name = "booksByAuthorBtn";
+            this.booksByAuthorBtn.Size = new System.Drawing.Size(187, 33);
+            this.booksByAuthorBtn.TabIndex = 20;
+            this.booksByAuthorBtn.Text = "Books by author";
+            this.booksByAuthorBtn.UseVisualStyleBackColor = false;
+            this.booksByAuthorBtn.Click += new System.EventHandler(this.booksByAuthorBtn_Click);
+            // 
+            // bookByPublisherBtn
+            // 
+            this.bookByPublisherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.bookByPublisherBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bookByPublisherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bookByPublisherBtn.Location = new System.Drawing.Point(3, 402);
+            this.bookByPublisherBtn.Name = "bookByPublisherBtn";
+            this.bookByPublisherBtn.Size = new System.Drawing.Size(187, 33);
+            this.bookByPublisherBtn.TabIndex = 21;
+            this.bookByPublisherBtn.Text = "Books by publisher";
+            this.bookByPublisherBtn.UseVisualStyleBackColor = false;
+            this.bookByPublisherBtn.Click += new System.EventHandler(this.bookByPublisherBtn_Click);
+            // 
+            // rentedBooksByRenter
+            // 
+            this.rentedBooksByRenter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.rentedBooksByRenter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rentedBooksByRenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rentedBooksByRenter.Location = new System.Drawing.Point(3, 441);
+            this.rentedBooksByRenter.Name = "rentedBooksByRenter";
+            this.rentedBooksByRenter.Size = new System.Drawing.Size(187, 33);
+            this.rentedBooksByRenter.TabIndex = 22;
+            this.rentedBooksByRenter.Text = "Books by renters";
+            this.rentedBooksByRenter.UseVisualStyleBackColor = false;
+            this.rentedBooksByRenter.Click += new System.EventHandler(this.rentedBooksByRenter_Click);
             // 
             // MainMenu
             // 
@@ -716,6 +776,10 @@
         private System.Windows.Forms.Button returnBookbtn;
         private System.Windows.Forms.Button expiredBtn;
         private System.Windows.Forms.Button btnExtend;
+        private System.Windows.Forms.Button bookDetailsBtn;
+        private System.Windows.Forms.Button booksByAuthorBtn;
+        private System.Windows.Forms.Button bookByPublisherBtn;
+        private System.Windows.Forms.Button rentedBooksByRenter;
     }
 }
 
