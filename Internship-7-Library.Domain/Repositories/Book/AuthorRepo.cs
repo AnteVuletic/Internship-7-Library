@@ -27,9 +27,7 @@ namespace Internship_7_Library.Domain.Repositories.Book
 
         public Author GetAuthorByName(string authorFullname)
         {
-            var regName = new Regex(@"[^\s]+");
-            var matchAuthor = regName.Matches(authorFullname);
-            return _context.Authors.First(ath => ath.AuthorPerson.Name == matchAuthor[0].Value && ath.AuthorPerson.Surname == matchAuthor[1].Value);
+            return _context.Authors.First(ath => ath.AuthorPerson.Name + " " + ath.AuthorPerson.Surname == authorFullname);
         }
 
         public List<Author> GetAllAuthors()
